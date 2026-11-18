@@ -1,0 +1,211 @@
+{
+  "model": "Calibrated binary restarted phase experiment; no hardware data.",
+  "delta": 0.01,
+  "cases": [
+    {
+      "mu": 0.02,
+      "gamma": 0.0,
+      "D": 256,
+      "c0": 0.0,
+      "c1": 1.0,
+      "rate_depth": 19,
+      "finite_depth": 18,
+      "Istar": 0.06134301357353186,
+      "IC": 0.0032000001821277093,
+      "ratio": 19.169690650687507,
+      "LQ": 73.41043732280761,
+      "UQ": 80.49011558005574,
+      "LC": 1407.2553740099063,
+      "UC": 1422.673912783178,
+      "verdict": "Depth gain",
+      "s": 0.6593846719714731,
+      "ell": 1.583448362860958,
+      "h": 3,
+      "expected_blocks": 4.471673087780875,
+      "name": "Ideal",
+      "readout_bound_kind": "upper",
+      "readout_bound": 69.04973303795785,
+      "readout_bound_depth": 19
+    },
+    {
+      "mu": 0.002,
+      "gamma": 0.0,
+      "D": 16,
+      "c0": 0.0,
+      "c1": 1.0,
+      "rate_depth": 16,
+      "finite_depth": 16,
+      "Istar": 0.0005120001911111336,
+      "IC": 3.200000000018205e-05,
+      "ratio": 16.000005972131902,
+      "LQ": 8795.343305163804,
+      "UQ": 8828.86000015272,
+      "LC": 140725.5454095712,
+      "UC": 140889.2674150203,
+      "verdict": "Depth gain",
+      "s": 0.06395631828030929,
+      "ell": 0.12808747091841702,
+      "h": 36,
+      "expected_blocks": 551.803750009545,
+      "name": "Shallow",
+      "readout_bound_kind": "upper",
+      "readout_bound": 7815.1672128887785,
+      "readout_bound_depth": 16
+    },
+    {
+      "mu": 0.005,
+      "gamma": 0.02,
+      "D": 256,
+      "c0": 0.0,
+      "c1": 1.0,
+      "rate_depth": 24,
+      "finite_depth": 26,
+      "Istar": 0.0018160410949224568,
+      "IC": 0.0002000000000444457,
+      "ratio": 9.080205472594404,
+      "LQ": 2479.6891797892827,
+      "UQ": 2501.970594371788,
+      "LC": 22516.08726065577,
+      "UC": 22542.627569679185,
+      "verdict": "Depth gain",
+      "s": 0.15283967058340403,
+      "ell": 0.3080934887985833,
+      "h": 15,
+      "expected_blocks": 96.22963824506877,
+      "name": "Noisy",
+      "readout_bound_kind": "lower",
+      "I_Q": 0.0021473268054027703,
+      "readout_bound": 2097.1272010397306,
+      "readout_bound_depth": 19,
+      "I_Q_over_I_Y": 1.182421923934744,
+      "axis_over_Y_at_Y_optimum": 0.08526015586208122
+    },
+    {
+      "mu": 0.02,
+      "gamma": 0.04,
+      "D": 256,
+      "c0": 50.0,
+      "c1": 5.0,
+      "rate_depth": 15,
+      "finite_depth": 17,
+      "Istar": 0.0015886566240251982,
+      "IC": 0.0032000001821277093,
+      "ratio": 0.4964551667521737,
+      "LQ": 2834.6071674834566,
+      "UQ": 2908.646175415424,
+      "LC": 1407.2553740099063,
+      "UC": 1422.673912783178,
+      "verdict": "Every readout loses",
+      "s": 0.31855723064870045,
+      "ell": 0.6600811405922064,
+      "h": 7,
+      "expected_blocks": 21.545527225299434,
+      "name": "Costly",
+      "readout_bound_kind": "lower",
+      "I_Q": 0.001747662810373424,
+      "readout_bound": 2576.7084053071385,
+      "readout_bound_depth": 13,
+      "I_Q_over_I_Y": 1.1000884545745009,
+      "axis_over_Y_at_Y_optimum": 0.36577310216869074
+    },
+    {
+      "mu": 0.01,
+      "gamma": 0.01,
+      "D": 256,
+      "c0": 100.0,
+      "c1": 1.0,
+      "rate_depth": 39,
+      "finite_depth": 39,
+      "Istar": 0.0035489811211403665,
+      "IC": 0.0008000000028447696,
+      "ratio": 4.436226385650405,
+      "LQ": 1268.8761363951448,
+      "UQ": 1443.256755774222,
+      "LC": 5629.021796398284,
+      "UC": 5635.964747664585,
+      "verdict": "Depth gain",
+      "s": 0.4761601654627142,
+      "ell": 1.0360135341416743,
+      "h": 5,
+      "expected_blocks": 10.383142127872102,
+      "name": "Restarts",
+      "readout_bound_kind": "lower",
+      "I_Q": 0.003968660921311533,
+      "readout_bound": 1134.694432812292,
+      "readout_bound_depth": 39,
+      "I_Q_over_I_Y": 1.118253601765093,
+      "axis_over_Y_at_Y_optimum": 0.5541647301431873
+    }
+  ],
+  "grid_checks": 162,
+  "absorbing_chain_checks": [
+    {
+      "s": 0.2,
+      "h": 5,
+      "expected": 19.181818181818176,
+      "error": 0.11636363636363636
+    },
+    {
+      "s": 0.5,
+      "h": 4,
+      "expected": 7.804878048780488,
+      "error": 0.012195121951219514
+    },
+    {
+      "s": 0.7,
+      "h": 3,
+      "expected": 4.238866396761134,
+      "error": 0.005465587044534416
+    },
+    {
+      "s": 0.08,
+      "h": 9,
+      "expected": 69.50964356398146,
+      "error": 0.19106825082674858
+    }
+  ],
+  "random_perturbation_cases": 1000,
+  "maximum_actual_to_bound_ratio": 0.7368652915828475,
+  "maximum_derivative_error": 2.9421679502428244e-10,
+  "maximum_envelope_objective_error": 1.7763568394002505e-15,
+  "confidence_allocation": {
+    "a": [
+      1.0,
+      4.0,
+      20.0,
+      100.0
+    ],
+    "delta_by_task": [
+      8e-05,
+      0.00032,
+      0.0016,
+      0.008
+    ],
+    "optimal_cost": 653.2086488969306,
+    "uniform_cost": 748.9330683884978,
+    "saving": 95.72441949156712
+  },
+  "directional_perturbation": [
+    {
+      "z": 0.01,
+      "observable": 0.9998000199980005
+    },
+    {
+      "z": 0.2,
+      "observable": 0.923076923076923
+    },
+    {
+      "z": 0.8,
+      "observable": 0.21951219512195105
+    },
+    {
+      "z": 1.0,
+      "observable": -2.2371143170757382e-17
+    },
+    {
+      "z": 2.0,
+      "observable": -0.6
+    }
+  ],
+  "status": "All research-model checks passed."
+}

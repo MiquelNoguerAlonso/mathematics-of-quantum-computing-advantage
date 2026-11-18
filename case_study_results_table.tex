@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{rrrrrrl}
+\toprule
+$\gamma$ & $t_M$ & $t_U$ & $L_Q$ & $L_M$ & $U_Y$ & Certificate\\
+\midrule
+0.004 & 38 & 31 & 1,655.29 & 2,016.58 & 2,475.90 & Y cost gain\\
+0.015 & 29 & 30 & 4,382.91 & 5,059.73 & 5,130.65 & Y cost gain\\
+0.020 & 24 & 22 & 5,765.69 & 6,658.96 & 6,722.91 & \shortstack{Every readout\\loses}\\
+\bottomrule\end{tabular}
+\caption{Calibrated amplitude-oracle example at $\delta=.01$, $D=256$,
+$c_0=20$, $c_1=10$, and unit direct-sampling price.
+$t_M$ maximizes measured information; $t_U$ minimizes the fixed-$Y$ counting cost.
+$L_Q=k_\delta/I_Q$ and $L_M=k_\delta/I_M$ lower-bound every allowed single-block readout.
+The $L_M$ entries use interval upper bounds on $I_M$ and are rounded down;
+other entries are rounded approximations. Direct-sampling bounds are
+$L_R\approx5564.8$ and $U_R\approx5701.1$. Gain means $U_Y<L_R$;
+the final loss is certified with outward rounding in~\eqref{eq:strong-loss}.}
+\label{tab:amplitude-case}
+\end{table}

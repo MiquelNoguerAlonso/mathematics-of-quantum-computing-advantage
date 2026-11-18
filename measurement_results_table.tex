@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{rrrrl}
+\toprule
+$\gamma$ & First-conclusive error & Expected cost & Pure-state cost & Meets $\delta=.01$\\
+\midrule
+0 & 0.000000 & 69.050 & 69.050 & Yes\\
+1e-06 & 0.000020 & 69.048 & 69.050 & Yes\\
+0.0001 & 0.001996 & 68.905 & 69.050 & Yes\\
+0.001 & 0.019423 & 67.641 & 69.050 & No\\
+0.01 & 0.152991 & 57.949 & 69.050 & No\\
+\bottomrule\end{tabular}
+\caption{Exact first-conclusive readout at $\mu=.02$, $t=19$, $c_0=0$, $c_1=1$.
+The decreasing mean cost at higher noise reflects more conclusive outcomes, including errors;
+rows failing the target are not admissible upper bounds at that confidence.}
+\label{tab:crossover}
+\end{table}

@@ -1,0 +1,12 @@
+{
+  "status": "all checks passed",
+  "envelope_grid_points": 100001,
+  "robustness_parameter_cases": 50000,
+  "independent_absorbing_chain_cases": 80,
+  "cost_model_cases": 10000,
+  "strict_certificates_checked": 5761,
+  "K": 2.4929009605609225,
+  "limiting_sandwich_factor": 1.2464504802804612,
+  "noise_threshold_constant": 0.03727398041717231,
+  "counterexample_ratio": 2.4390243902439024
+}

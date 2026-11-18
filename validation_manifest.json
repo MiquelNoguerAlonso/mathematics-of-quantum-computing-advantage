@@ -1,0 +1,341 @@
+{
+  "revision_date": "2026-11-15",
+  "title": "The Mathematics of Quantum Computing Advantage",
+  "revision": "Exact confidence-price frontier, sharp qubit realizability and readout-price transition, and convergent finite-catalogue minimax programs",
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8",
+    "mpmath": "1.3.0"
+  },
+  "verification": [
+    {
+      "script": "verify_examples.py",
+      "result_file": "verification_results.json",
+      "execution": "passed",
+      "reported_status": "All mathematical example checks passed.",
+      "validation_basis": "Prior passed run retained; script, result and log verified byte-for-byte unchanged in this revision."
+    },
+    {
+      "script": "research_checks.py",
+      "result_file": "research_verification_results.json",
+      "execution": "passed",
+      "reported_status": "All research-model checks passed.",
+      "validation_basis": "Prior passed run retained; script, result and log verified byte-for-byte unchanged in this revision."
+    },
+    {
+      "script": "verify_boost.py",
+      "result_file": "boost_verification_results.json",
+      "execution": "passed",
+      "reported_status": "all checks passed",
+      "validation_basis": "Prior passed run retained; script, result and log verified byte-for-byte unchanged in this revision."
+    },
+    {
+      "script": "verify_case_study.py",
+      "result_file": "case_study_results.json",
+      "execution": "passed",
+      "reported_status": "All assertions completed; see detailed result file.",
+      "validation_basis": "Prior passed run retained; script, result and log verified byte-for-byte unchanged in this revision."
+    },
+    {
+      "script": "verify_measurements.py",
+      "result_file": "measurement_verification_results.json",
+      "execution": "passed",
+      "reported_status": "All measurement checks passed",
+      "validation_basis": "Prior passed run retained; script, result and log verified byte-for-byte unchanged in this revision."
+    },
+    {
+      "script": "verify_readout_patch.py",
+      "result_file": "readout_patch_verification_results.json",
+      "execution": "passed",
+      "reported_status": "All readout-patch checks passed",
+      "validation_basis": "Prior passed run retained; script, result and log verified byte-for-byte unchanged in this revision."
+    },
+    {
+      "script": "verify_operational_frontier.py",
+      "result_file": "operational_frontier_results.json",
+      "execution": "passed",
+      "reported_status": "All independent audit checks passed",
+      "validation_basis": "Prior passed run retained; script, result and log verified byte-for-byte unchanged in this revision."
+    },
+    {
+      "script": "verify_interval_certificates.py",
+      "result_file": "interval_certificate_results.json",
+      "execution": "passed",
+      "reported_status": "All interval certificates passed",
+      "validation_basis": "Prior passed run retained; script, result and log verified byte-for-byte unchanged in this revision."
+    },
+    {
+      "script": "verify_foundational_tools.py",
+      "result_file": "foundational_verification_results.json",
+      "execution": "passed",
+      "reported_status": "All foundational checks passed",
+      "validation_basis": "Prior passed run retained; script, result and log verified byte-for-byte unchanged in this revision."
+    },
+    {
+      "script": "verify_joint_frontier.py",
+      "result_file": "joint_frontier_results.json",
+      "execution": "passed",
+      "reported_status": "All uniform-frontier checks passed",
+      "validation_basis": "Prior passed run retained; script, result and log verified byte-for-byte unchanged in this revision."
+    },
+    {
+      "script": "verify_refinements.py",
+      "result_file": "refinement_verification_results.json",
+      "execution": "passed",
+      "reported_status": "All matrix and drift refinement checks passed",
+      "validation_basis": "Prior passed run retained; script, result and log verified byte-for-byte unchanged in this revision."
+    },
+    {
+      "script": "verify_table_rates.py",
+      "result_file": "table_rate_results.json",
+      "execution": "passed",
+      "reported_status": "All research-table interval certificates passed",
+      "validation_basis": "Prior passed run retained; script, result and log verified byte-for-byte unchanged in this revision."
+    },
+    {
+      "script": "verify_deep_extensions.py",
+      "result_file": "deep_extension_results.json",
+      "execution": "passed",
+      "reported_status": "All deep-extension checks passed",
+      "validation_basis": "Prior passed run retained; script, result and log verified byte-for-byte unchanged in this revision.",
+      "counts": {
+        "interval_constant_inequalities": 5,
+        "independent_measured_information_cases": 90,
+        "global_constant_parameter_cases": 633,
+        "gain_interval_depths": 57,
+        "qutrit_probability_vectors": 12,
+        "interval_feasible_catalogue_duals": 6,
+        "interval_certified_catalogue_designs": 6,
+        "three_hypothesis_adaptive_trees": 40,
+        "asymmetric_directional_policy_trees": 20,
+        "exact_policy_envelope_horizons": 6,
+        "bellman_lower_certificate_checks": 3
+      }
+    },
+    {
+      "script": "verify_sharp_characterization.py",
+      "result_file": "sharp_characterization_results.json",
+      "execution": "passed",
+      "reported_status": "All sharp-characterization checks passed",
+      "validation_basis": "Executed in this revision. Exact Fraction certificates check all nine optima, barrier policies, supporting-line inequalities and infinite tails. Independent interval Bellman checks use horizon 96. Conditional-minimax and three-label LP diagnostics use floating point; they are explicitly distinguished from the rational certificates.",
+      "counts": {
+        "exact_quantum_realization_and_simulation": 1,
+        "quantum_realizability_region_checks": 24,
+        "exact_absorbing_chain_checks": 44,
+        "exact_displayed_optima": 9,
+        "independent_interval_bellman_checks": 9,
+        "general_family_exact_certificates": 72,
+        "enumerated_two_stage_trees": 2942,
+        "independent_conditional_minimax_LPs": 2,
+        "exact_tree_Bellman_comparisons": 3,
+        "three_hypothesis_tree_LP_dual_checks": 2,
+        "exact_price_curve_certificates": 303
+      }
+    }
+  ],
+  "new_result": {
+    "theorem": "20.10, with explicit constants proved in Theorem 21.3",
+    "pointwise_bounds": "(2/5) s_t^2 G_t <= d_M(t) <= 3 s_t^2 G_t (Lemma 21.1)",
+    "uniform_scale": "A_eff * (1 + log(1/delta)/G_eff)",
+    "explicit_lower_multiplier": "1/70",
+    "explicit_upper_multiplier": "42",
+    "coverage": "The uniform phase law retains its stated signal, depth, noise, affine-price and confidence assumptions, including a separate gamma=0 proof. The fixed-depth bracket permits adaptive readouts at one fixed depth.",
+    "global_constant_gap": 2940,
+    "fixed_depth_lower_multiplier": "1/12",
+    "fixed_depth_upper_multiplier": "9/4",
+    "fixed_depth_constant_gap": 27
+  },
+  "pdf_checks": {
+    "pages": 74,
+    "unresolved_reference_markers": 0,
+    "tex_warnings": [],
+    "visual_review": "Revised first page inspected. The 300-word prose abstract and six keywords fit on the title page. The updated PDF has 74 pages and no unresolved reference markers."
+  },
+  "content": {
+    "parts": 3,
+    "sections_including_appendices": 33,
+    "explicit_proofs": 60
+  },
+  "scope": "The phase resource law is for the stated calibrated binary phase model and remains a uniform comparison. The likelihood-lattice family has exact finite-confidence minimax costs for every positive readout price within the two declared readouts, including all adaptive and randomized policies in that catalogue. A separate proposition gives its exact qubit realizability region. General finite-outcome priced catalogues with pairwise-identifiable finite hypotheses are characterized by finite programs with a proved horizon error; computational efficiency is not claimed. These results do not optimize over all POVMs, unrestricted persistent-memory protocols or error-corrected implementations, and do not establish a general computational separation or novelty priority.",
+  "sha256": {
+    "Quantum_Computing_Advantage.tex": "4d03fd0966aeebb781bed470ab2880fd115f1063a2405146e3ce62e441b23515",
+    "foundational_tools.tex": "e18843638c1a5554918409fc8b7a7e8f1cd9eb4b8cf79b67c832ef08f36cfebd",
+    "Quantum_Computing_Advantage.pdf": "be287ed41521a9c8c673ee7bbcd9da7b0920f47ecd74403dd3120731be1bb49c",
+    "references.bib": "15ab1b5be811d56490c106fe1e091720bd16346277d52f0fb8f506f71798a825",
+    "README.txt": "d8b0bfc44863bff4fc77ec36210156e3024c5901692a71538ac047041c3c77de",
+    "Makefile": "a050ed151999a131df6960364416a6378fcaa3344b03dd36a44b5c4ca7efed83",
+    "requirements.txt": "0237ec785288e2f6d4b6f0bdd5aca64bcec4b28162061aead2a24a1a946d29f4",
+    "quantum_advantage_figures.pdf": "0ad1a53422e1798b39ffb5250c319fdce5e299e129bae5795352ae678c0a4926",
+    "quantum_decision_frontier.pdf": "e6890304f50d795f17d165305e6b6f76188e0e6952e113b06295493d2bb230ac",
+    "measurement_frontier.pdf": "7179d6b4be7091eb3935a3d01a81b456294078a4b2955463fb2eb5e058c17917",
+    "research_results_table.tex": "62f68844c65c7632a5fd65e094ef72b67ffdc38f0130f496bce37ef303506481",
+    "case_study_results_table.tex": "d27ef8b6347cc75859d315f465266d503a49b0c9ffb1d46d46c52a71a434245d",
+    "measurement_results_table.tex": "69777fe17c79f010a981369dca570cc9d2b798beeb3a5c196b051fac5ec0a978",
+    "operational_results_table.tex": "f449b8be32b4d16bd491302a7cdcc9cd0d00d15fea0def25691ad9feca9c9ab7",
+    "verify_examples.py": "33bb0c674925118eb775eb30ba5f45bd47ff02a44bff6246e72d64685ddb4f4c",
+    "verification_results.json": "f1135c6786b900a53bf1e619a01b3b765ed3ddfbc493171e2933a406fcb36209",
+    "verify_examples_run.log": "f1135c6786b900a53bf1e619a01b3b765ed3ddfbc493171e2933a406fcb36209",
+    "research_checks.py": "827035af7b5e48cf9fc02dcb16531199db0fa4c79c5f0c2e1318d2fd41225736",
+    "research_verification_results.json": "4238f8bc68a0e62c5898d0851b070e1aac132b5ff8b254795e6535a10d5a87f9",
+    "research_checks_run.log": "4238f8bc68a0e62c5898d0851b070e1aac132b5ff8b254795e6535a10d5a87f9",
+    "verify_boost.py": "6dcf0fa20d0bddebb5697ed747d5113d93e613dd20969b9955e7f0a4898194a2",
+    "boost_verification_results.json": "7e8e4da9ac9e426535df31d497beb345146e5ee4fd037ef27ee4305fea61a917",
+    "verify_boost_run.log": "7e8e4da9ac9e426535df31d497beb345146e5ee4fd037ef27ee4305fea61a917",
+    "verify_case_study.py": "970aed3092708c639d836fe0a688104806fd519e5bb0baf664ee3a156c3f992d",
+    "case_study_results.json": "fc2ef9d47de79c63873f1f4cf134c90bbbbcf9eb4348a152a26c1bdf60e8b0f7",
+    "verify_case_study_run.log": "fc2ef9d47de79c63873f1f4cf134c90bbbbcf9eb4348a152a26c1bdf60e8b0f7",
+    "verify_measurements.py": "43f2f4fb835ff4a4d3238113e548c48955a036fe44e1815cff41782113b66260",
+    "measurement_verification_results.json": "24c0b83887a43013c75953da49bb98dac2959ee0a0dedc9ac312596dd9699143",
+    "verify_measurements_run.log": "24c0b83887a43013c75953da49bb98dac2959ee0a0dedc9ac312596dd9699143",
+    "verify_readout_patch.py": "4816b60d75a523783c656bd26b19a52463787773d9b95e37eee11f328593770d",
+    "readout_patch_verification_results.json": "a9e41e794f322ca06d15e5271248eb9a324f83517d0d58e82f4b04ad7fcda906",
+    "verify_readout_patch_run.log": "a9e41e794f322ca06d15e5271248eb9a324f83517d0d58e82f4b04ad7fcda906",
+    "verify_operational_frontier.py": "50f816457ae643b8b148b5448c051b6e08285f874b164d3025c98a1d01588059",
+    "operational_frontier_results.json": "adea9a865f02b111960025fc908efe84970aa3b08815797bf062ab69234b3d3a",
+    "verify_operational_frontier_run.log": "adea9a865f02b111960025fc908efe84970aa3b08815797bf062ab69234b3d3a",
+    "verify_interval_certificates.py": "3bcd570d8fd9ae20f01e918eccdd5a99967a3b1b6d318a6c04a87b2ec8f5d6fb",
+    "interval_certificate_results.json": "b593f5f6dd6b14df7f4762b55818302d898c5b4dc26e64666d646e9d744d7edf",
+    "verify_interval_certificates_run.log": "44474c38508747cf5db64ec4920a5ad69a9079c93a6fe5e88d2eb13402fae329",
+    "verify_foundational_tools.py": "be33219f944239872d9add5778888832f222aca77297c20b8be674274c020290",
+    "foundational_verification_results.json": "b76e3f1640e286657cebe7d343d2add8f5240dea617339705324616d79c982cd",
+    "verify_foundational_tools_run.log": "b76e3f1640e286657cebe7d343d2add8f5240dea617339705324616d79c982cd",
+    "joint_frontier.tex": "99b2752b0cc94f6891bbbe0d3602aaa75e45fd1c1107a0caa871182220a29ec8",
+    "verify_joint_frontier.py": "87a1f2dda1922f50fd955c9794e8836735b450b0182fdbc3b20f3e45e0efc8a1",
+    "joint_frontier_results.json": "e5d3174a9e104a834a44e91d7a93b85fa5181ce4dd88aa0b80230c02cbad61e7",
+    "verify_joint_frontier_run.log": "cd709c28ca835cfdaf074d8a0748e8eebf44e86351e6acb7f3996c704301bf25",
+    "joint_frontier.pdf": "3d1b84bba202ded7ac119f02bf5cca3e85181170db2553d3ffeafc41fcbb554b",
+    "auxiliary_readout_bounds.tex": "7b03ce07570c97a4052edd27f0a5ebe91609be1c153b5a5ebae8fc3c3390d4dd",
+    "verify_refinements.py": "3bed29208ef26c3591456f03b764feb78f58f9b58305c662fbc94c7aa3f01f8c",
+    "refinement_verification_results.json": "a2741d09667a5be7c78ebff3bff8dc519619805b125fc6f2ad0d56a4a235e157",
+    "verify_refinements_run.log": "b9eb462712df629117cf70fbdab996fadf43086e8e2bedc6f726ac0249c5795e",
+    "verify_table_rates.py": "d76107f9184a6c3b5bd1b641710f229d1e8ad883d2728802554295043058fd38",
+    "table_rate_results.json": "16cbe7e3c32d532fb2bd46a8a23b2b4d757cac3e92f95cffb4c0408007cbe02c",
+    "verify_table_rates_run.log": "62aa8700db9b5fb86b40503355ffe067637d15a6651c97d3e67341a502a333f7",
+    "deep_extensions.tex": "d6870816552d42e5a1e8f1fb9acae4eafa09d733ccfe8f5b63a57f67c1cc8bb4",
+    "verify_deep_extensions.py": "cc12a6cd8413b5908aec132e3f1c7564f6dd82a59b4194996f3590ae921d3d2f",
+    "deep_extension_results.json": "1b8c5e23b9e404bb1339275710d44bd799e37f5e0aaa04655d965e8b1dd8b235",
+    "verify_deep_extensions_run.log": "7cbd0accbec4e17a45c171a42197ffa7a81b213cb5c65fa525fbe21e0c33ef52",
+    "deep_gain_table.tex": "42d37845ea42e5dcb6cc9603926b52bd5f74ae489f987c0b86a9db0a989ecfd5",
+    "multihypothesis_results_table.tex": "39303787f5a1814b11b98fc7507246730d19eacb091b55f7f15cd766fefab28c",
+    "sharp_characterization.tex": "6de5f159fb9c85d98d53b56af53421ce07e4a7c874503d77315381e7e1652b87",
+    "verify_sharp_characterization.py": "6468b3a3c6f19b969ff76e10a6056d688449135f2ec1d8efa4b99f260941f291",
+    "sharp_characterization_results.json": "fb6c468d8f06c256ef9b00952a32e1a16d3cc12c121523c34d4ce3895a3ccbaa",
+    "verify_sharp_characterization_run.log": "617577b15e6da55003a963070fdb4c6896760b125ff9eb46fe3e9e8386e306ea",
+    "sharp_cost_table.tex": "b726271d4efe95f90d45887ea5749f50df71e460ca86658a521a08409bb2187e",
+    "sharp_price_frontier.pdf": "bf03dae142f8ccfca7eb1eac9266a0cafea230a0fc8278f9ba75aaaee8239733"
+  },
+  "clean_source_build": {
+    "exit_code": 0,
+    "pages": 74,
+    "tex_warnings": [],
+    "method": "Compiled the revised manuscript on Overleaf. Overleaf reported zero errors and zero warnings. The downloaded output is the delivered PDF. The source outside the abstract matches the previous release byte for byte."
+  },
+  "additional_result": {
+    "proposition": "20.14",
+    "scope": "Fixed-depth error and mean-cost guarantees under a strictly positive certified conditional signal floor; no stationary exact-cost identity is asserted for drift."
+  },
+  "macro_standardization": {
+    "bra_ket_arguments": 137,
+    "downarrow_spacing": 15,
+    "original_shorthand_was_valid": true,
+    "macro_only_pdf_comparison": "All 57 baseline pages had identical extracted text and raster pixels at 72 dpi."
+  },
+  "review_disposition": {
+    "focus": "Foundational monograph retained as requested; abstract leads with the exact catalogue frontier and uniform phase resource law, with their distinct scopes explicit.",
+    "section_20": "Former Proposition 20.4, Lemma 20.5 and Proposition 20.6 moved intact to Appendix G; factor-three result becomes Remark 20.4; regime tables merged.",
+    "constants": "Universal global multipliers sharpened to 1/70 and 42. The 246-case historical numerical band is still clearly labeled as a finite grid, not a universal bound; the new suite independently tests 633 cases.",
+    "proof_additions": "Expanded stopped-tree limit and generalized-eigenvalue calculation; fixed phase eigenstate access clarified; conditional-drift proof retains both terminal values.",
+    "suggested_coarse_grid": "Proposed 2000-point residual tolerance fails: 0.0001749143962 exceeds 0.00001. Existing refined solver retained and verified.",
+    "reread": "Foundational discrimination, information and stopped-testing arguments on prior pages 8-10; conclusions, decision transfer, bias threshold, perturbation certificate, confidence allocation and notation on prior pages 50-57 were reread.",
+    "table_7": {
+      "method": "Outward interval arithmetic at 65 decimal digits; 136 allowed depths; cost inequalities rounded down.",
+      "cost_lower_bounds": {
+        "Noisy": 2476.1,
+        "Costly": 2825.4,
+        "Restarts": 1254.0
+      },
+      "approximate_excess_rate_percent": {
+        "Noisy": 0.1419474837,
+        "Costly": 0.3257764443,
+        "Restarts": 1.1839711909
+      },
+      "previous_number": "Table 4 in the earlier manuscript, Table 6 before the exact-frontier extension"
+    }
+  },
+  "source_checks": [
+    {
+      "source": "Berta, Fawzi and Tomamichel (2017)",
+      "url": "https://arxiv.org/pdf/1512.02615v2",
+      "verified": "Lemma 1 and Eq. (4), pp. 2-3: variational expressions; Theorem 2, p. 3: projective and POVM measured-relative-entropy equality.",
+      "result": "Citations correct; Eq. (4) pinpoint added."
+    },
+    {
+      "source": "Flammia and O'Donnell (2024)",
+      "url": "https://quantum-journal.org/papers/q-2024-06-20-1381/pdf/",
+      "verified": "Definition 2.26 and Eq. (33), p. 10: measured Bures chi-square divergence and spectral quadratic form.",
+      "result": "Citation correct; Eq. (33) pinpoint added."
+    },
+    {
+      "source": "Li, Tan and Tomamichel (2022)",
+      "url": "https://arxiv.org/html/2104.14706v2",
+      "verified": "Adaptive local measured-relative-entropy rates and collective measurements; credited as established theory."
+    },
+    {
+      "source": "Nitinawarat and Veeravalli (2015)",
+      "url": "https://arxiv.org/abs/1310.1844",
+      "verified": "Controlled sensing for multihypothesis testing with nonuniform control costs; credited as prior framework."
+    },
+    {
+      "source": "Ogawa and Nagaoka (2000)",
+      "url": "https://arxiv.org/abs/quant-ph/9906090",
+      "verified": "Quantum Stein lemma and strong converse; used for relative-entropy regularization."
+    },
+    {
+      "source": "Simpson, Palias and Jose (2026)",
+      "url": "https://arxiv.org/abs/2605.04915",
+      "verified": "Composite sequential quantum hypothesis testing error exponents, v3, accepted ITW 2026; cited without novelty-priority claim."
+    },
+    {
+      "source": "Fauss and Zoubir (2015)",
+      "url": "https://arxiv.org/pdf/1501.05870v2",
+      "verified": "Theorems 4.1 and 4.2, pp. 8-9: sequential-testing duality and LP formulation. Credited as established machinery."
+    },
+    {
+      "source": "Li, Li, Wang and Liu (2019)",
+      "url": "https://arxiv.org/pdf/1601.06447",
+      "verified": "Theorems 1-3: finite- and infinite-horizon controlled sensor selection. Credited as established machinery."
+    },
+    {
+      "source": "Blackwell (1953)",
+      "url": "https://doi.org/10.1214/aoms/1177729032",
+      "verified": "Bibliographic identity checked; comparison of experiments credited as the classical principle. The manuscript supplies its own conditional simulation and expected-cost proof; no claim that the original paper proves the new price threshold."
+    }
+  ],
+  "deep_extensions": {
+    "fixed_depth_bracket": "Theorem 21.2: cost between 1/12 and 9/4 times c(t)/s_t^2 [1 + log(1/delta)/G_t].",
+    "global_bracket": "Theorem 21.3: cost between 1/70 and 42 times the uniform scale; explicit attaining depth min(Dbar,ceil(r_eff/2)).",
+    "readout_gain_scope": "Interval-certified conclusive-readout gains over every fixed-Y policy, at stated very low noise; guaranteed price thresholds exceed 3.26, 4.89 and 6.52. These are mathematical stress cases, not attainable-hardware forecasts.",
+    "calibration_band": "Corollary 21.4: conditional parameter uncertainty with a strictly positive signal floor implies robust error and expected cost bounds.",
+    "multihypothesis": "Theorem 22.1 and Corollary 22.2: joint KL/affinity occupation LP and directly verified feasible dual; Proposition 22.3: recorded randomized-design ML upper bound. Six qutrit cases have certified lower and upper bounds.",
+    "memory": "Theorem 23.1: min of two directed measured divergences gives the adaptive block rate for arbitrary distinct full-rank states; regularization recovers min quantum divergence, while finite confidence requires entry cost at least (1-2delta)mc. Established rate theory is credited.",
+    "stopping": "Theorem 23.2: Bayesian finite-horizon truncation error at most lambda^2/(4*n*c_min), yielding a minimax lower certificate. Interpolation checks are floating point, not interval certification."
+  },
+  "sharp_characterization": {
+    "general_catalogue": "Theorem 23.3: finite causal-policy LPs converge to exact minimax cost with an explicit O(1/N) bound. Corollary 23.4: uniform action separation improves this to exponential convergence.",
+    "binary_dual": "Theorem 23.5: exact finite-confidence dual and exponential interval Bellman certificate for reflection-symmetric catalogues.",
+    "simulation": "Lemma 23.6: conditional-law simulation at bounded expected cost gives catalogue dominance.",
+    "sharp_price": "Theorem 23.7: explicit full-rank noncommuting qubits realize the sharp universal price threshold 6/5; no extra-readout benefit at or above it at any confidence, and strict benefit below it at sufficiently high confidence.",
+    "exact_frontier": "Theorem 23.8: likelihood-lattice drift and parity give a matching converse attained by a mixture of at most two finite barriers, for all kappa>0 and 0<delta<1/2. Barriers need not be adjacent.",
+    "realizability": "Proposition 23.9: necessary and sufficient qubit geometry and price-family parameter region, with an explicit POVM construction.",
+    "certificates": "Nine exact rational optimal costs, including constructive policies, dual supporting lines and tail cutoffs; independent interval Bellman recursion at horizon 96 agrees within 1e-12. Table 4 intervals have width at most 1e-10 solely due to outward decimal display rounding.",
+    "general_constant_gap_unchanged": 2940,
+    "interpretation": "Exact cost claims are for the declared two-readout catalogue, not for all POVMs. Rational certificates are exact arithmetic, not a proof-assistant formalization."
+  },
+  "deposit": {
+    "doi": "10.5281/zenodo.24262887",
+    "preparation_date": "2026-11-18",
+    "affiliation": "Artificial Intelligence Finance Institute"
+  }
+}

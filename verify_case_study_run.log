@@ -1,0 +1,62 @@
+{
+  "a_minus": 0.036,
+  "a_plus": 0.044,
+  "delta": 0.01,
+  "theta_minus": 0.19089392711174485,
+  "theta_plus": 0.2113313024021523,
+  "mu": 0.010218687645203728,
+  "D_plus": 0.0008627978297927035,
+  "D_minus": 0.0008092347863776026,
+  "L_R": 5564.784817629701,
+  "U_R": 5701.06926346898,
+  "coherent_rows": [
+    {
+      "gamma": 0.004,
+      "depth_cap": 38,
+      "t_star": 38,
+      "t_U": 31,
+      "L_Q": 2148.341305962658,
+      "U_Q": 2475.895967688241,
+      "I_Q": 0.00272049271928957,
+      "t_Q": 38,
+      "L_Q_all_readouts": 1655.2948005344667,
+      "barrier": 4,
+      "stopping_error": 0.00953303886638405,
+      "certificate": "Y cost gain",
+      "sampling_cost_over_coherent_cost_lower_bound": 2.2475842645462905
+    },
+    {
+      "gamma": 0.015,
+      "depth_cap": 38,
+      "t_star": 29,
+      "t_U": 30,
+      "L_Q": 5098.179900088748,
+      "U_Q": 5130.646338009708,
+      "I_Q": 0.0010274495297273943,
+      "t_Q": 24,
+      "L_Q_all_readouts": 4382.908671267486,
+      "barrier": 6,
+      "stopping_error": 0.009774888340856465,
+      "certificate": "Y cost gain",
+      "sampling_cost_over_coherent_cost_lower_bound": 1.0846167229270387
+    },
+    {
+      "gamma": 0.02,
+      "depth_cap": 38,
+      "t_star": 24,
+      "t_U": 22,
+      "L_Q": 6690.377926867864,
+      "U_Q": 6722.905424025499,
+      "I_Q": 0.0007810367439143424,
+      "t_Q": 20,
+      "L_Q_all_readouts": 5765.692188261213,
+      "barrier": 8,
+      "stopping_error": 0.009937722840692633,
+      "certificate": "Every readout loses",
+      "sampling_cost_over_coherent_cost_lower_bound": 0.8277351035971668
+    }
+  ],
+  "controlled_circuit_checks": 228,
+  "independent_absorbing_chain_checks": 3,
+  "rounding_checks": 10002
+}

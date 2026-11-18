@@ -1,0 +1,106 @@
+{
+  "hadamard_squared_max_error": 2.220446049250313e-16,
+  "bernstein_vazirani_probabilities": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0
+  ],
+  "simon_probabilities": {
+    "000": 0.25,
+    "001": 0.0,
+    "010": 0.25,
+    "011": 0.0,
+    "100": 0.0,
+    "101": 0.25,
+    "110": 0.0,
+    "111": 0.25
+  },
+  "grover_probabilities": [
+    0.12499999999999997,
+    0.7812499999999997,
+    0.9453124999999991,
+    0.3300781249999996
+  ],
+  "qpe_exact_phase": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "shor_order_factors": {
+    "order": 4,
+    "factors": [
+      3,
+      5
+    ],
+    "phase_peaks": [
+      0,
+      64,
+      128,
+      192
+    ]
+  },
+  "linear_system": {
+    "normalized_solution": [
+      0.4472135954999579,
+      0.8944271909999159
+    ],
+    "success_probability": 0.6249999999999999,
+    "Z_expectation": -0.6
+  },
+  "trotter": [
+    {
+      "steps": 1,
+      "operator_error": 0.4392310332375572,
+      "bound": 0.48999999999999994
+    },
+    {
+      "steps": 2,
+      "operator_error": 0.21014613345703262,
+      "bound": 0.24499999999999997
+    },
+    {
+      "steps": 4,
+      "operator_error": 0.10385637031495654,
+      "bound": 0.12249999999999998
+    },
+    {
+      "steps": 8,
+      "operator_error": 0.05177563391214718,
+      "bound": 0.06124999999999999
+    },
+    {
+      "steps": 16,
+      "operator_error": 0.025868737517101666,
+      "bound": 0.030624999999999996
+    },
+    {
+      "steps": 32,
+      "operator_error": 0.012931983529627763,
+      "bound": 0.015312499999999998
+    },
+    {
+      "steps": 64,
+      "operator_error": 0.0064656936020866685,
+      "bound": 0.007656249999999999
+    }
+  ],
+  "amplitude_estimation": {
+    "a": 0.2,
+    "M": 64,
+    "error_bound": 0.04167947955685712,
+    "probability_within_bound": 0.8165804905953715,
+    "guaranteed_probability": 0.8105694691387022
+  },
+  "spectral_chebyshev_max_error": 1.2212453270876722e-15,
+  "status": "All mathematical example checks passed."
+}

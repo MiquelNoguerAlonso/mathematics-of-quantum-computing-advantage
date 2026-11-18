@@ -1,0 +1,567 @@
+\section{Sharper constants and the price of readout}
+\label{sec:sharp-constants}
+A uniform exponent is useful, but it does not substitute for a finite-cost
+comparison. We now sharpen the constants analytically, keep the cost of
+readout visible, and identify which guarantees survive incomplete calibration.
+
+\subsection{A sharper local information and cost envelope}
+\begin{lemma}[Sharper pointwise constants]\label{lem:sharp-local}
+For every allowed depth and positive noise, write $s=s_t$, $G=G_t$,
+$\eta=\eta_t$, and $j=1-\sqrt{1-s^2}$. Then
+\begin{equation}\label{eq:sharp-local}
+ \frac25s^2G\leq d_M(t)\leq3s^2G.
+\end{equation}
+For $B=\log(1/\delta)$ and $0<\delta\leq1/4$, the better of the
+two counting protocols obeys
+\begin{equation}\label{eq:sharp-local-upper}
+ \min\{U_Y(t,\delta),U_E(t,\delta)\}
+ \leq\frac{9c(t)}{4s^2}\left(1+\frac B G\right).
+\end{equation}
+\end{lemma}
+\begin{proof}
+The earlier constructive lower bounds give
+$d_M\geq s^2\max\{2,\tfrac12\log(1+\eta)\}$.
+For $x\geq0$, $\max\{2,x/2\}\geq(2/5)(1+x)$, proving the lower side.
+For the upper side, the fidelity--ratio inequality gives
+\[
+ d_M\leq4[1+\operatorname{arsinh}\sqrt\eta]j.
+\]
+The function $\operatorname{arsinh}\sqrt\eta-\log(1+\eta)$ has its
+maximum at $\eta=1/3$, with value $\log(3\sqrt3/4)$.
+Consequently, with $q_0=1+1/\sqrt2$,
+\[
+ d_M\leq
+ \frac{4[1+\log(3\sqrt3/4)]}{q_0}\,s^2G<3s^2G,
+\]
+where $j=s^2/(1+\sqrt{1-s^2})\leq s^2/q_0$.
+
+If $\eta<1$, the fixed-$Y$ estimate in the proof of
+Proposition~\ref{prop:conclusive-counting} is at most
+$(c/s^2)(1+B/G)$. If $\eta\geq1$, then
+$\ell_E\geq\log(1+4\eta)$ and
+\[
+ 1+\log(1+\eta)\leq\frac98\log(1+4\eta)\leq\frac98\ell_E.
+\]
+For the first inequality, the difference of the right and left sides is
+positive at $\eta=1$ and has positive derivative thereafter.
+Using $b_E\leq1+B/\ell_E$ and $r(1+\cos\vartheta)\leq2$ gives
+$U_E\leq(2c/s^2)[1+9B/(8G)]$, which implies the stated bound.
+\end{proof}
+
+\begin{theorem}[A factor-27 cost bracket at a fixed depth]
+\label{thm:fixed-depth-sharp}
+Let $C_{M,\delta}^\star(t)$ restrict every block to depth $t$, while
+allowing adaptive POVMs. Under the same positive-noise assumptions,
+\begin{equation}\label{eq:fixed-depth-sharp}
+ \frac{c(t)}{12s_t^2}\left(1+\frac{\log(1/\delta)}{G_t}\right)
+ \leq C_{M,\delta}^\star(t)
+ \leq\frac{9c(t)}{4s_t^2}
+             \left(1+\frac{\log(1/\delta)}{G_t}\right).
+\end{equation}
+The upper bound is an attainable stopping cost, and the lower bound
+allows all single-block readouts at that fixed depth.
+\end{theorem}
+\begin{proof}
+The affinity and KL converses give
+$C^\star(t)\geq c(t)\max\{h_\delta/j_t,k_\delta/d_M(t)\}$.
+Put
+\[
+ h_0=1-\sqrt3/2,\qquad
+ \kappa_0=\frac{\log3}{2\log4},\qquad q_0=1+1/\sqrt2.
+\]
+For $\delta\leq1/4$, $h_\delta\geq h_0$ and
+$k_\delta\geq\kappa_0B$: indeed
+$k_\delta\geq[B+\log(3/4)]/2$ and $B\geq\log4$.
+Thus the lower bound is at least
+\[
+ \frac c{s^2}\max\left\{h_0q_0,\frac{\kappa_0}{3}\frac B G\right\}.
+\]
+For $a,b,x>0$, $\max\{a,bx\}\geq ab(1+x)/(a+b)$.
+Here $ab/(a+b)>1/12$; the exact expression is
+$h_0q_0\kappa_0/(3h_0q_0+\kappa_0)\approx0.0837274$.
+Lemma~\ref{lem:sharp-local} supplies the upper bound.
+\end{proof}
+
+The factor 27 refers to this fixed-depth envelope. Minimizing its lower
+side over depths would not by itself lower-bound a protocol that changes
+depth adaptively. The following argument supplies that separate step.
+
+\subsection{A smaller global constant gap}
+\begin{theorem}[Explicit constants for adaptive depth]
+\label{thm:sharp-global}
+In Theorem~\ref{thm:uniform-cost}, let
+$S_\delta=A_{\rm eff}[1+\log(1/\delta)/G_{\rm eff}]$. Then
+\begin{equation}\label{eq:sharp-global}
+ \frac1{70}S_\delta\leq C_{M,\delta}^\star\leq42S_\delta.
+\end{equation}
+The positive-noise upper bound is attained by choosing
+\begin{equation}\label{eq:sharp-depth}
+ t_\sharp=\min\{\overline D,\lceil\reff/2\rceil\}
+\end{equation}
+and then $Y$ counting if $\eta_{t_\sharp}<1$, or conclusive counting
+otherwise. The zero-noise convention in Theorem~\ref{thm:uniform-cost}
+also satisfies these constants, including at zero error.
+\end{theorem}
+\begin{proof}
+Write $R=\reff$, $x=\mu^2R/\gamma$, $G=1+\log(1+x)$, and
+$A=c(R)/(\mu^2R^2)$. For $t\leq R$,
+\[
+ \frac{s_t^2}{c(t)}\leq\frac4A,\qquad
+ \eta_t\leq2x,\qquad G_t\leq(1+\log2)G.
+\]
+The cost inequality uses the monotonicity of $t^2/c(t)$.
+If an allowed $t>R$ exists, $R=\gamma^{-1}$. With $v=t/R>1$,
+\[
+ \frac{s_t^2}{c(t)}\leq\frac{4v^2e^{-2v}}A\leq\frac4A,
+ \qquad
+ \eta_t\leq\frac{4xv^2}{e^{2v}-1}\leq2x.
+\]
+The last inequality follows because $v^2/(e^{2v}-1)$ decreases for
+$v\geq1$ and $4/(e^2-1)<2$. Hence
+\[
+ J_F\leq\frac4{q_0A},\qquad
+ I_M\leq\frac{12(1+\log2)G}{A}.
+\]
+The joint converse therefore gives
+$C^\star\geq A\max\{a,bB/G\}$, where
+$a=h_0q_0/4$ and $b=\kappa_0/[12(1+\log2)]$.
+Their harmonic combination is $ab/(a+b)\approx0.0145421>1/70$.
+
+For the upper bound put $\alpha=3\pi/32$ and $v=t_\sharp/R$.
+Since $\mu\leq1/8$, the phase cap
+$m=\lfloor\pi/(8\mu)\rfloor$ is at least three, and
+$m\geq(3/4)\pi/(8\mu)\geq\alpha R$.
+Also $D\geq R$, so $\overline D\geq\alpha R$.
+For $R\geq1$, $R/2\leq\lceil R/2\rceil\leq R$.
+It follows that $\alpha\leq v\leq1$ and $\gamma t_\sharp\leq v$.
+The sine bound on $[0,\pi/4]$ now gives
+\begin{align}
+ \frac{s_{t_\sharp}^2}{c(t_\sharp)}
+ &\geq\frac{a_\sharp}{A},&
+ a_\sharp&=\frac{32}{\pi^2}\alpha^2e^{-2\alpha},\label{eq:sharp-a}\\
+ \eta_{t_\sharp}&\geq b_\sharp x,&
+ b_\sharp&=\frac{32}{\pi^2}
+ \min\left\{\frac{\alpha^2}{e^{2\alpha}-1},
+                     \frac1{e^2-1}\right\}.\label{eq:sharp-b}
+\end{align}
+For the first line use $c(t_\sharp)\leq c(R)$ and the increase of
+$v^2e^{-2v}$ on $[0,1]$. For the second, the function
+$(e^{2u}-1)/u$ increases, while $u=\gamma t_\sharp\leq v$.
+The function $v^2/(e^{2v}-1)$ has only one interior critical point
+on $[\alpha,1]$, a maximum, so its minimum occurs at an endpoint.
+Its derivative has the sign of $e^{2v}(1-v)-1$, which first increases
+and then decreases. This proves both lines without estimating an
+optimizer numerically.
+
+We have $0<b_\sharp<1$, and concavity of $\log(1+x)$ implies
+$G_{t_\sharp}\geq b_\sharp G$.
+Lemma~\ref{lem:sharp-local} yields
+\[
+ C^\star\leq\frac{9}{4a_\sharp b_\sharp}
+           A(1+B/G)<42A(1+B/G),
+\]
+since $a_\sharp\approx0.156053$, $b_\sharp\approx0.350566$, and
+$9/(4a_\sharp b_\sharp)\approx41.1283$.
+These explicit numerical inequalities are also checked with outward
+interval arithmetic in the accompanying script.
+
+At zero noise $1-\cos(2\mu t)\leq2\mu^2t^2$ gives
+$J_0\leq2/A$ and hence $C^\star\geq h_0A/2>A/70$.
+At $t_\sharp$, $1-\cos(2\mu t)\geq16\mu^2t^2/\pi^2$, so
+the zero-error cost is at most $\pi^2A/(16\alpha^2)=64A/9<42A$.
+Zero error itself has the exact value of Theorem~\ref{thm:noiseless-converse}.
+\end{proof}
+
+The global envelope now spans a factor 2940, compared with approximately
+$1.06\times10^6$ for the first conservative proof. This is a proved
+improvement, not a fitted constant. It still does not replace the much
+sharper parameter-specific certificates. The finite-grid band reported
+earlier remains a numerical diagnostic rather than a universal theorem.
+
+\subsection{Large readout gains and their overhead threshold}
+Let $L_Y=k_\delta/I_Y$ and
+$U_E^{\min}=\min_tU_E(t,\delta)$ at the common base price.
+Suppose conclusive readout instead multiplies each block price by
+$\kappa\geq1$, while the fixed-$Y$ price stays unchanged. Its stopping
+law is unchanged, so
+\begin{equation}\label{eq:readout-overhead-threshold}
+ \kappa<\frac{L_Y}{U_E^{\min}}
+ \quad\Longrightarrow\quad
+ \kappa U_E^{\min}<C_{Y,\delta}^\star.
+\end{equation}
+This is a sufficient finite-confidence comparison against every
+fixed-$Y$ protocol, including adaptive depth. It is not an equality
+for the unknown optimal cost of either class.
+
+\input{deep_gain_table.tex}
+
+The low-noise rows deliberately test the mechanism at demanding
+confidence. They are not estimates of attainable hardware noise.
+Their role is to demonstrate that the small gains in the earlier noisy
+examples are not a universal bound on readout improvement, and to state
+exactly how much additional readout cost each comparison tolerates.
+
+\subsection{What can be guaranteed without exact calibration?}
+\begin{corollary}[A calibrated band is sufficient for robust counting]
+\label{cor:band-calibration}
+Suppose the sign $h$ is fixed, but the conditional block law may use
+history-dependent $\mu_j\in[\mu_-,\mu_+]$ and
+$\gamma_j\in[0,\gamma_+]$, with $\mu_->0$.
+At a fixed depth satisfying $2\mu_+t\leq\pi/4$, let
+\[
+ \underline s=e^{-\gamma_+t}\sin(2\mu_-t)>0.
+\]
+If the conditional $Y$ signal has this phase-covariant form, the counting
+rule tuned to $\underline s$ has error at most $\delta$ and expected
+cost at most $c(t)b/\underline s$, with $b$ as in
+Proposition~\ref{prop:drifting-visibility}.
+\end{corollary}
+\begin{proof}
+The sine is increasing on the stipulated interval, so every conditional
+signal is at least $\underline s$. Apply
+Proposition~\ref{prop:drifting-visibility}.
+\end{proof}
+An uncertainty set with no positive signal floor need not permit a
+uniform finite expected cost. In particular, including an identical
+observation law under opposite labels makes identification impossible.
+The robust statement gives an implementable guarantee; it does not
+assert that the calibrated minimax law is unchanged for composite models.
+
+\section{Costed experiments beyond a binary qubit}
+\label{sec:general-costed}
+The closed form in $\mu,\gamma,D$ belongs to the phase model. The
+sequential architecture extends further: a quantum experiment produces
+an observation law, and its information is compared with its full cost.
+The distinction between these two levels is essential. Controlled
+multihypothesis testing with nonuniform costs is an established subject
+\citep{chernoff1959,nitinawarat2015}; the following finite-confidence
+formulation combines its occupation constraints with an affinity budget.
+
+\subsection{A finite catalogue with several hypotheses}
+Let $h\in\{1,\ldots,K\}$, with $K\geq2$, and let $a$ range over a finite catalogue.
+An action prepares a finite-dimensional state $\rho_{h,a}$, measures
+a specified finite-outcome POVM $\{E_{a,y}\}_y$, and costs $c_a\geq c_{\min}>0$.
+Thus
+\[
+ p_{h,a}(y)=\Tr(\rho_{h,a}E_{a,y}).
+\]
+The state may live on many qubits and need not have rank two. Costs may
+include action-specific state preparation, measurement synthesis, and
+classical processing. Between actions only classical information is
+retained. Conditional on the chosen action and hypothesis, its stated
+law does not depend on earlier outcomes. Assume common positive support
+after removing outcomes that are zero under every hypothesis.
+
+Define the directed information and pairwise affinity loss
+\begin{equation}\label{eq:catalogue-information}
+ d_{hk,a}=D_{\rm KL}(p_{h,a}\|p_{k,a}),\qquad
+ j_{hk,a}=1-\sum_y\sqrt{p_{h,a}(y)p_{k,a}(y)}.
+\end{equation}
+Let $C_{\mathcal E,\delta}^\star$ minimize the worst expected cost among
+catalogue policies with $\Pr_h(\widehat h\ne h)\leq\delta$ for every $h$.
+Throughout this section $0<\delta<1/2$.
+
+\begin{theorem}[Joint occupation-measure converse]
+\label{thm:occupation-converse}
+Every such finite-cost policy induces numbers $x_{h,a}\geq0$ satisfying
+\begin{align}
+ \sum_a c_ax_{h,a}&\leq C, &&1\leq h\leq K,\notag\\
+ \sum_a d_{hk,a}x_{h,a}&\geq k_\delta, &&h\ne k,\label{eq:occupation-lp}\\
+ \frac12\sum_a j_{hk,a}(x_{h,a}+x_{k,a})&\geq h_\delta,
+ &&h<k.\notag
+\end{align}
+Consequently the linear program minimizing $C$ under these constraints
+lower-bounds $C_{\mathcal E,\delta}^\star$.
+\end{theorem}
+\begin{proof}
+Set $x_{h,a}=\E_h\sum_{n=1}^N\mathbf1_{\{a_n=a\}}$.
+Conditional likelihood additivity gives the stopped-transcript
+divergence $\sum_ad_{hk,a}x_{h,a}$. Coarsen the decision to the event
+$\{\widehat h=h\}$: its probability is at least $1-\delta$ under $h$
+and at most $\delta$ under $k$, giving the KL constraint.
+
+For the affinity constraint, include randomized action selection in
+the classical history tree. Its kernel is hypothesis independent and
+does not change affinity. At an observation node $z$ for action $a$,
+the affinity lost is
+$\sqrt{P_h(z)P_k(z)}j_{hk,a}$.
+Sum over living nodes and pass to the stopped limit as in
+\eqref{eq:stopped-affinity}; finite expected cost ensures that the
+living terminal mass vanishes. Coarsening the final decision gives
+terminal affinity at most $2\sqrt{\delta(1-\delta)}$.
+Finally $\sqrt{P_h(z)P_k(z)}\leq[P_h(z)+P_k(z)]/2$, so the total
+affinity loss is at most the third line of~\eqref{eq:occupation-lp}.
+The cost identity is immediate from the definition of $x_{h,a}$.
+\end{proof}
+
+The program is a relaxation: its variables need not arise from one
+causal policy. It therefore gives a lower bound, not an exact solution.
+Discarding the affinity constraints and normalizing action counts
+recovers the familiar directed information-per-cost lower bound
+\[
+ C_{\mathcal E,\delta}^\star\geq
+ \max_h\frac{k_\delta}{J_h},\qquad
+ J_h=\max_{q\in\Delta(\mathcal E)}
+ \frac{\min_{k\ne h}\sum_aq_ad_{hk,a}}{\sum_aq_ac_a}.
+\]
+Unlike the binary symmetric model, several alternatives may compete
+for the experimental budget; the maximizing mixture can depend on $h$.
+
+\begin{corollary}[A directly checkable dual certificate]
+\label{cor:occupation-dual}
+Suppose nonnegative $u_h,\alpha_{hk},\beta_{hk}=\beta_{kh}$ satisfy
+\begin{equation}\label{eq:occupation-dual}
+ \sum_hu_h\leq1,\qquad
+ \sum_{k\ne h}\alpha_{hk}d_{hk,a}
+ +\frac12\sum_{k\ne h}\beta_{hk}j_{hk,a}\leq u_hc_a
+ \quad\hbox{for all }h,a.
+\end{equation}
+Then
+\[
+ C_{\mathcal E,\delta}^\star\geq
+ k_\delta\sum_{h\ne k}\alpha_{hk}
+ +h_\delta\sum_{h<k}\beta_{hk}.
+\]
+\end{corollary}
+\begin{proof}
+Multiply the information constraints by $\alpha_{hk}$ and the affinity
+constraints by $\beta_{hk}$, sum, and use~\eqref{eq:occupation-dual}
+followed by the cost constraints. No assertion of strong duality is
+needed for this certificate.
+\end{proof}
+For unrestricted readouts, a valid relaxation replaces $d_{hk,a}$ by
+a proved upper bound, such as quantum relative entropy, and replaces
+$j_{hk,a}$ by $1-F(\rho_{h,a},\rho_{k,a})$, where $F$ is root fidelity.
+Both replacements enlarge the feasible set because measurement cannot
+increase relative entropy or decrease fidelity. Pricing must still cover
+every allowed action; restricting a measurement catalogue cannot certify
+a lower bound for a larger unpriced class.
+
+\subsection{A constructive upper bound for the same catalogue}
+\begin{proposition}[Recorded randomized design]\label{prop:catalogue-upper}
+Choose actions independently with probabilities $q_a$, record both action
+and outcome, and use maximum likelihood after $n$ observations. Put
+\[
+ A_{hk}(q)=\sum_aq_a\sum_y\sqrt{p_{h,a}(y)p_{k,a}(y)},\quad
+ A_{\max}(q)=\max_{h<k}A_{hk}(q)<1,\quad
+ \bar c(q)=\sum_aq_ac_a.
+\]
+Then
+\begin{equation}\label{eq:catalogue-upper}
+ C_{\mathcal E,\delta}^\star\leq
+ \bar c(q)\left\lceil
+ \frac{\log((K-1)/\delta)}{-\log A_{\max}(q)}\right\rceil.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Under $h$, preferring $k$ requires its likelihood ratio relative to $h$
+to be at least one. Markov's inequality applied to its square root
+bounds that event by $A_{hk}(q)^n$. A union bound over the other labels
+gives error at most $(K-1)A_{\max}(q)^n$. Expected cost is $n\bar c(q)$.
+\end{proof}
+This attainable upper bound requires neither a posterior oracle nor
+knowledge of the true label. The lower and upper constructions expose
+the difference between learning which experiment is useful and receiving
+that experiment's information once it has been selected.
+
+\subsection{A noncommuting three-state example with priced measurements}
+On $\mathbb C^3$, let $v_1=(2,1,1)^\top$, and obtain $v_2,v_3$ by
+moving the entry 2 to coordinates 2 and 3. Define
+\[
+ \rho_h=(1-\nu)\frac{v_hv_h^\top}{6}+\frac\nu3 I_3,
+ \qquad \nu=0.003.
+\]
+These full-rank states do not commute. Their generating vectors span
+$\mathbb C^3$, so this is a three-hypothesis experiment rather than a
+binary qubit embedded in a larger space. The catalogue contains the
+computational basis, of cost 1, and three state-directed bases, of cost
+$\kappa$. The first directed basis has projectors onto
+\[
+ (2,1,1)^\top/\sqrt6,\quad
+ (0,1,-1)^\top/\sqrt2,\quad
+ (-1,1,1)^\top/\sqrt3;
+\]
+the other bases permute coordinates. All density-matrix and projector
+entries are rational, making the observation probabilities exact rational
+numbers. The script verifies positivity, completeness, and noncommutation,
+then certifies a feasible LP dual and a randomized design using outward
+interval arithmetic. The design is selected from mixtures of the
+computational basis and an equal mixture of the three directed bases;
+no optimality of this restricted design search is asserted.
+
+\input{multihypothesis_results_table.tex}
+
+These bounds concern the explicitly priced catalogue. They are not a
+comparison against a classical computation supplied with a different input.
+
+\section{Memory, finite confidence, and optimal stopping}
+\label{sec:memory-stopping}
+Removing the no-memory restriction changes the admissible experiment.
+It does not make the quantum-relative-entropy relaxation automatically
+attainable at finite confidence or at zero additional cost.
+
+\subsection{Collective blocks and the order of limits}
+Let $\rho,\sigma$ be any distinct full-rank states in finite dimension.
+No reflection or common-spectrum assumption is imposed. A block
+contains $m$ independent copies and permits any joint measurement. Blocks are discarded after measurement, but the next
+measurement can depend on the classical history. Each block costs $mc$.
+
+\begin{theorem}[Memory recovers the quantum rate, with an entry cost]
+\label{thm:memory-limits}
+For fixed $m$, define
+\[
+ \begin{gathered}
+ I_m=\frac{\min\{D_M(\rho^{\otimes m}\|\sigma^{\otimes m}),
+                         D_M(\sigma^{\otimes m}\|\rho^{\otimes m})\}}{mc},
+ \\
+ D_{\leftrightarrow}=\min\{D(\rho\|\sigma),D(\sigma\|\rho)\}.
+ \end{gathered}
+\]
+The corresponding minimax expected cost satisfies
+\begin{align}
+ \lim_{\delta\downarrow0}
+ \frac{C_{m,\delta}^\star}{\log(1/\delta)}&=\frac1{I_m},\label{eq:memory-rate}\\
+ I_m&\leq D_{\leftrightarrow}/c,\qquad
+ \lim_{m\to\infty}I_m=D_{\leftrightarrow}/c,\label{eq:memory-regularization}\\
+ C_{m,\delta}^\star&\geq(1-2\delta)mc.
+ \label{eq:memory-entry}
+\end{align}
+Thus the limits of confidence and block size cannot in general be
+interchanged: taking $\delta\downarrow0$ first yields the finite
+coefficient $c/D_{\leftrightarrow}$ after $m\to\infty$, whereas taking
+$m\to\infty$ first at fixed $\delta<1/2$ makes the normalized cost diverge.
+\end{theorem}
+\begin{proof}
+The two directed stopped-KL converses give the lower coefficient.
+For achievability choose one measurement approaching each directed
+measured divergence. Use the first when the log likelihood favors
+$\rho$ and the second when it favors $\sigma$. Both induced pairs have
+positive divergence in both directions and affinity strictly below one.
+Let $a<1$ be the larger affinity. Under either true hypothesis, for the
+continued policy and signed log likelihood $S_n$,
+\[
+ \E_h[e^{-(S_{n+1}-S_n)/2}\mid\mathcal F_n]\leq a,
+ \qquad \Pr_h(S_n\leq0)\leq a^n.
+\]
+The expected number of selections favoring the wrong hypothesis is
+therefore at most $1/(1-a)$. Full rank gives a finite increment bound
+$L$ for this fixed pair of block measurements. Stopping at
+$|Z_N|\geq B=\log(1/\delta)$ controls both errors. The positive drift
+under either choice first proves finite mean duration. If $d_h$ is
+the divergence of the measurement chosen for the true label and
+$\widetilde d_h$ that of the other, the stopped drift identity gives
+\[
+ \E_h N\leq
+ \frac{B+L+|d_h-\widetilde d_h|/(1-a)}{d_h}.
+\]
+Take the confidence limit, then let the approximation errors in both
+measurements tend to zero. This proves~\eqref{eq:memory-rate} without
+reflection symmetry. The underlying adaptive and collective-block
+information-rate results are established in \citet{li2022}.
+
+Data processing and additivity of quantum relative entropy give the
+upper bound in~\eqref{eq:memory-regularization}. Quantum Stein's lemma
+\citep{ogawa2000} supplies binary tests with acceptance probability
+$1-\epsilon_m$ under $\rho^{\otimes m}$, where $\epsilon_m\to0$,
+and probability at most $e^{-m(D-\zeta)}$ under $\sigma^{\otimes m}$,
+for any $\zeta>0$. Their classical KL divergence is at least
+$(1-\epsilon_m)m(D-\zeta)-h_2(\epsilon_m)$.
+Divide by $m$, take the limit, and let $\zeta\downarrow0$.
+Repeat in the reverse direction and take the minimum of the two
+convergent sequences.
+
+If a protocol stops before collecting any block with probability $p_0$,
+that event and its decision carry no information about the hypothesis.
+Under equal priors its error contribution is $p_0/2$, so $p_0\leq2\delta$.
+With probability at least $1-2\delta$ it pays for one complete block.
+This proves~\eqref{eq:memory-entry} and the order-of-limits statement.
+\end{proof}
+The entry-cost inequality also excludes choosing arbitrarily large
+collective blocks merely because their asymptotic information rate is
+better. With an additional memory and joint-measurement charge $w(m)$,
+the minimax rate becomes the smaller directed measured divergence
+divided by $mc+w(m)$.
+If $w(m)/m$ diverges, that rate tends to zero despite the information gain.
+
+\subsection{A Bellman equation with a finite-horizon error bound}
+Return to a finite catalogue for a binary problem, with positive outcome
+laws $p_{+,a},p_{-,a}$ and costs $c_a\geq c_{\min}$.
+For prior $\pi=\Pr(h=+)$, put
+\[
+ m_a(y;\pi)=\pi p_{+,a}(y)+(1-\pi)p_{-,a}(y),\qquad
+ T_a(\pi,y)=\frac{\pi p_{+,a}(y)}{m_a(y;\pi)}.
+\]
+Let $V_\lambda(\pi)$ be the infimum of expected cost plus $\lambda$
+times Bayes error, allowing immediate stopping. This is a different
+objective from a worst-case error constraint; the connection below is
+a lower bound, not an assumed equality.
+
+\begin{theorem}[Bellman truncation and a minimax lower certificate]
+\label{thm:bellman-certificate}
+Set $V_{\lambda,0}(\pi)=\lambda\min\{\pi,1-\pi\}$ and recursively
+\begin{equation}\label{eq:bellman}
+ V_{\lambda,n+1}(\pi)=\min\left\{
+ \lambda\min\{\pi,1-\pi\},\;
+ \min_a\left[c_a+\sum_y m_a(y;\pi)
+                  V_{\lambda,n}(T_a(\pi,y))\right]\right\}.
+\end{equation}
+These finite-horizon values decrease to $V_\lambda$, and for $n\geq1$
+\begin{equation}\label{eq:bellman-tail}
+ 0\leq V_{\lambda,n}(\pi)-V_\lambda(\pi)
+ \leq\frac{\lambda^2}{4nc_{\min}}.
+\end{equation}
+For the catalogue's binary minimax cost,
+\begin{equation}\label{eq:bellman-minimax}
+ C_{\mathcal E,\delta}^\star\geq
+ V_{\lambda,n}(1/2)-\frac{\lambda^2}{4nc_{\min}}-\lambda\delta,
+ \qquad\lambda\geq0.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Backward induction gives~\eqref{eq:bellman} as the optimum among
+policies using at most $n+1$ observations. Additional observations are
+optional, so these values decrease and remain above the unrestricted
+infimum. A policy within $\epsilon$ of that infimum has expected cost
+at most $\lambda/2+\epsilon$, because immediate stopping costs no more
+than $\lambda/2$. Thus $\E N\leq(\lambda/2+\epsilon)/c_{\min}$.
+Truncate it after $n$ observations and use the Bayes decision on the
+remaining paths. Cost can only decrease, while its additional error
+penalty is at most $(\lambda/2)\Pr(N>n)$.
+Markov's inequality gives an increase at most
+$\lambda(\lambda/2+\epsilon)/(2nc_{\min})$.
+Let $\epsilon\downarrow0$, proving both convergence and the error bound.
+Any policy with both errors at most $\delta$ has equal-prior penalized
+risk at most its worst expected cost plus $\lambda\delta$.
+Rearranging and applying~\eqref{eq:bellman-tail} proves the certificate.
+\end{proof}
+
+Each finite-horizon value is concave and piecewise linear in the prior:
+every finite decision tree has affine Bayes risk, and one takes the
+minimum over finitely many trees. Interpolating exact values on a prior
+grid therefore gives a lower approximation. Applying the Bellman map
+with this interpolation preserves the lower inequality by monotonicity.
+Such an approximation must still subtract the horizon correction in
+\eqref{eq:bellman-minimax}; a finite-horizon value alone is an upper
+bound on the unrestricted Bayes value and cannot certify the converse.
+The verification code compares interpolation with exact finite-tree
+enumeration at small horizons and checks the lower certificate against
+known attainable counting costs.
+
+\input{sharp_characterization.tex}
+
+\subsection{What the extension establishes}
+The phase theorem remains a closed-form result for a restricted model.
+The occupation and Bellman statements apply to finite-dimensional,
+priced observation catalogues; the memory theorem permits collective
+measurements inside blocks of growing size. These results make explicit
+which arguments use qubit geometry, reflection symmetry, calibration,
+or memory restrictions. They do not establish unrestricted quantum
+computational speedups or solve arbitrary composite state families.
+Composite sequential quantum testing already has separate asymptotic
+theory \citep{simpson2026}; the band-calibration corollary above gives
+a specific robust finite-cost guarantee rather than claiming that theory
+as new. The exact lattice frontier optimizes every finite confidence and positive
+readout price within its two-action family. Its quantum realizability
+condition, the convergent catalogue programs, and the phase resource law
+provide distinct levels of characterization; none silently enlarges the
+admissible experiment class of another.

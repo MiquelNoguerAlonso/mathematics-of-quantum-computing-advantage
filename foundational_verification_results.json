@@ -1,0 +1,14 @@
+{
+  "status": "All foundational checks passed",
+  "counts": {
+    "channel_reconstruction": 210,
+    "trace_contraction": 210,
+    "helstrom_random_effects": 2520,
+    "pure_copy_error": 200,
+    "holevo_measurements": 210,
+    "one_copy_Y_optimal": 1000,
+    "noiseless_depth_optimum": 1000,
+    "noiseless_two_sided_scale": 1000
+  },
+  "note": "Matrix and finite-parameter checks supplement the proofs; no formal proof-assistant claim."
+}

@@ -1,0 +1,149 @@
+{
+  "status": "All measurement checks passed",
+  "counts": {
+    "matrix_entropy": 70,
+    "axis_information": 35,
+    "usd": 50,
+    "adaptive_identities": 35,
+    "random_povm_data_processing": 175,
+    "optimized_gap_grid": 90
+  },
+  "max_matrix_entropy_error": 1.1065259819531548e-11,
+  "adaptive_stopping_checks": [
+    {
+      "delta": 0.1,
+      "error": 0.08689651500970424,
+      "expected_blocks": 35.76830205637098,
+      "analytic_cost_bound": 77.91467343549422,
+      "wrong_direction_visits": 10.201188814553644,
+      "residual_probability": 9.97298522235782e-14,
+      "propagation_steps": 696
+    },
+    {
+      "delta": 0.01,
+      "error": 0.009244646089473708,
+      "expected_blocks": 86.54255279987497,
+      "analytic_cost_bound": 123.17940809026341,
+      "wrong_direction_visits": 15.26820036816028,
+      "residual_probability": 9.856297214676515e-14,
+      "propagation_steps": 1421
+    },
+    {
+      "delta": 0.001,
+      "error": 0.0009208494127593171,
+      "expected_blocks": 133.29222777510256,
+      "analytic_cost_bound": 168.4441427450326,
+      "wrong_direction_visits": 16.120483713717146,
+      "residual_probability": 9.844881318629583e-14,
+      "propagation_steps": 1779
+    }
+  ],
+  "crossover_rows": [
+    {
+      "gamma": 0.0,
+      "error": 0.0,
+      "expected_cost": 69.04973303795786,
+      "meets_target": true
+    },
+    {
+      "gamma": 1e-06,
+      "error": 2.001570711647282e-05,
+      "expected_cost": 69.04828078436373,
+      "meets_target": true
+    },
+    {
+      "gamma": 0.0001,
+      "error": 0.0019955383199990254,
+      "expected_cost": 68.90494536292759,
+      "meets_target": true
+    },
+    {
+      "gamma": 0.001,
+      "error": 0.019422707485630384,
+      "expected_cost": 67.6405049457411,
+      "meets_target": false
+    },
+    {
+      "gamma": 0.01,
+      "error": 0.1529910193689296,
+      "expected_cost": 57.94936289074319,
+      "meets_target": false
+    }
+  ],
+  "achievable_rates": [
+    {
+      "mu": 0.02,
+      "gamma": 0.0001,
+      "D": 256,
+      "c0": 0.0,
+      "c1": 1.0,
+      "Y": [
+        0.061046723086015546,
+        19
+      ],
+      "randomized_axis": [
+        0.08548760808703498,
+        19
+      ],
+      "numerically_optimized_projective": [
+        0.1387404254636154,
+        19
+      ],
+      "quantum_bound": [
+        0.1735044164450465,
+        19
+      ]
+    },
+    {
+      "mu": 0.02,
+      "gamma": 0.01,
+      "D": 256,
+      "c0": 0.0,
+      "c1": 1.0,
+      "Y": [
+        0.038805831084297936,
+        19
+      ],
+      "randomized_axis": [
+        0.023475314941968983,
+        19
+      ],
+      "numerically_optimized_projective": [
+        0.040601966486427055,
+        19
+      ],
+      "quantum_bound": [
+        0.04868637057808346,
+        19
+      ]
+    },
+    {
+      "mu": 0.002,
+      "gamma": 0.02,
+      "D": 256,
+      "c0": 0.0,
+      "c1": 1.0,
+      "Y": [
+        0.00029368313424451203,
+        25
+      ],
+      "randomized_axis": [
+        1.070191615589992e-05,
+        68
+      ],
+      "numerically_optimized_projective": [
+        0.00029375217197435244,
+        25
+      ],
+      "quantum_bound": [
+        0.0003473200548950706,
+        20
+      ]
+    }
+  ],
+  "normalized_gap_ratio_range": [
+    0.4196868933732346,
+    1.206623747219704
+  ],
+  "caveat": "Projective rates are numerical achievable constructions, not certified global POVM optima."
+}

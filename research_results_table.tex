@@ -1,0 +1,41 @@
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{lrrrrr}
+\toprule
+Setting & $\mu$ & $\gamma$ & $D$ & $c_0$ & $c_1$\\
+\midrule
+Ideal & 0.02 & 0 & 256 & 0 & 1\\
+Shallow & 0.002 & 0 & 16 & 0 & 1\\
+Noisy & 0.005 & 0.02 & 256 & 0 & 1\\
+Costly & 0.02 & 0.04 & 256 & 50 & 5\\
+Restarts & 0.01 & 0.01 & 256 & 100 & 1\\
+\bottomrule\end{tabular}
+\caption{Parameters of the reproducible decision experiments.}
+\end{table}
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrrrl}
+\toprule
+Setting & $t_\star$ & $t_U$ & POVM cost & $L_Y$ & $U_Y$ & $I_Y/I_C$ & Certificate\\
+\midrule
+Ideal & 19 & 18 & $\leq 69.1$ & 73.4 & 80.5 & 19.170 & Depth gain\\
+Shallow & 16 & 16 & $\leq 7{,}815.2$ & 8,795.3 & 8,828.9 & 16.000 & Depth gain\\
+Noisy & 24 & 26 & $\geq 2{,}476.1$ & 2,479.7 & 2,502.0 & 9.080 & Depth gain\\
+Costly & 15 & 17 & $\geq 2{,}825.4$ & 2,834.6 & 2,908.6 & 0.496 & Every readout loses\\
+Restarts & 39 & 39 & $\geq 1{,}254.0$ & 1,268.9 & 1,443.3 & 4.436 & Depth gain\\
+\bottomrule\end{tabular}
+\caption{Bounds on optimal expected cost at $\delta=0.01$.
+$t_\star,t_U,L_Y,U_Y$ concern fixed $Y$. The POVM-cost column bounds
+$C^\star_{M,\delta}$ at the same block price. For $\gamma=0$ it is the
+zero-error upper bound of Proposition~\ref{prop:usd}, minimized over depth
+and rounded up. For $\gamma>0$ it is $k_\delta/I_M$ from
+Theorem~\ref{thm:measured}, evaluated using outward interval upper bounds
+on $I_M$ at every allowed depth and rounded down.
+Other numerical columns are rounded approximations.
+The sampler costs are $U_C\approx1422.7$ (Ideal, Costly),
+$140{,}889.3$ (Shallow), $22{,}542.6$ (Noisy), and $5636.0$ (Restarts).
+Depth gain means $U_Y<L_C$; in the Costly row,
+$k_\delta/I_M>U_C$ certifies a loss for every single-block readout.}
+\label{tab:researchresults}
+\end{table}

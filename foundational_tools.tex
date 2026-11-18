@@ -1,0 +1,345 @@
+\section{Channels, instruments, and the meaning of coherent access}
+\label{sec:channels-foundations}
+The passage from vectors to density operators is not merely a way to add
+noise to an ideal circuit. It specifies which transformations remain
+physical when a register is entangled with an unobserved reference.
+Throughout this section all Hilbert spaces are finite-dimensional.
+
+\subsection{Complete positivity and an environment representation}
+A quantum channel $\Phi:\mathcal L(\mathcal H_A)\to
+\mathcal L(\mathcal H_B)$ is linear, trace preserving, and completely
+positive: $\Phi\otimes\operatorname{id}_R$ preserves positivity for
+every reference space $\mathcal H_R$. Positivity on isolated inputs is
+weaker. For example, transposition preserves eigenvalues, but partial
+transposition of $\ket{\Omega}\bra{\Omega}$, with
+$\ket{\Omega}=(\ket{00}+\ket{11})/\sqrt2$, has eigenvalues
+$1/2,1/2,1/2,-1/2$. It cannot describe a physical local channel.
+
+\begin{theorem}[Finite-dimensional channel representation]\label{thm:kraus-foundations}
+A linear map is completely positive if and only if
+\begin{equation}\label{eq:kraus-foundations}
+ \Phi(A)=\sum_j K_j A K_j^\dagger.
+\end{equation}
+It is trace preserving exactly when $\sum_jK_j^\dagger K_j=I$.
+In that case $V\ket{\psi}=\sum_jK_j\ket{\psi}\otimes\ket{j}$ is an
+isometry and $\Phi(A)=\Tr_E(VAV^\dagger)$.
+\end{theorem}
+\begin{proof}
+The forward representation is the finite-dimensional Choi theorem
+\citep{choi1975}; its construction is short. Choose an orthonormal input
+basis and form
+$J_\Phi=\sum_{i,k}\ket{i}\bra{k}\otimes\Phi(\ket{i}\bra{k})$.
+Complete positivity implies $J_\Phi\succeq0$, since it is the image
+of the unnormalized maximally entangled projector under
+$\operatorname{id}\otimes\Phi$. Write
+$J_\Phi=\sum_j\ket{v_j}\bra{v_j}$ and define $K_j$ by
+$\ket{v_j}=\sum_i\ket{i}\otimes K_j\ket{i}$.
+Comparison of the $(i,k)$ blocks gives~\eqref{eq:kraus-foundations}.
+Conversely, each term preserves positivity after tensoring with any
+identity. Cyclicity of trace gives the trace-preservation condition,
+which also implies $V^\dagger V=I$. Partial trace gives the last formula.
+\end{proof}
+
+The environment description explains decoherence without invoking an
+unobserved classical measurement. For an isometry satisfying
+$V\ket{0}=\ket{0}\ket{e_0}$ and $V\ket{1}=\ket{1}\ket{e_1}$,
+discarding the environment multiplies the input $01$ matrix entry by
+$\braket{e_1}{e_0}$. Orthogonal environment states erase that coherence;
+identical environment states preserve it. The qubit dephasing channel
+with visibility $v\in[0,1]$ has the explicit form
+\begin{equation}\label{eq:dephasing-foundations}
+ \mathcal D_v(\rho)=\frac{1+v}{2}\rho+
+                   \frac{1-v}{2}Z\rho Z.
+\end{equation}
+It maps a Bloch vector $(x,y,z)$ to $(vx,vy,z)$, and
+$\mathcal D_v\mathcal D_w=\mathcal D_{vw}$. Taking $v=e^{-\gamma}$
+therefore gives visibility $e^{-\gamma t}$ after $t$ commuting phase
+queries, exactly as assumed in Part~\ref{part:operational}.
+
+\subsection{Outcome probabilities and post-measurement states}
+A POVM $\{E_y\}$ specifies probabilities, but not the state after an
+outcome. An instrument consists of completely positive maps
+$\mathcal M_y$ whose sum is trace preserving. Its effect is
+$E_y=\mathcal M_y^*(I)$; thus
+\[
+ p(y)=\Tr\mathcal M_y(\rho)=\Tr(E_y\rho),\qquad
+ \rho_y=\mathcal M_y(\rho)/p(y)
+\]
+when $p(y)>0$. Distinct instruments can have the same POVM and different
+state disturbances. In a restarted experiment the quantum output is
+discarded, so only the POVM probabilities remain relevant. In a protocol
+with quantum memory, that simplification is unavailable.
+
+Any POVM has a direct isometric implementation:
+$W\ket{\psi}=\sum_y\sqrt{E_y}\ket{\psi}\otimes\ket{y}$, for which
+$W^\dagger W=I$. Measuring the last register realizes its effects.
+This establishes physical realizability in principle. It does not make
+the synthesis of $W$ free; a cost model must decide how to price it.
+
+The dual channel satisfies
+$\Tr[B\Phi(A)]=\Tr[\Phi^*(B)A]$ and is positive and unital.
+Thus $0\preceq E\preceq I$ implies
+$0\preceq\Phi^*(E)\preceq I$. This simple observation is the basis
+for the distinguishability contraction proved below.
+
+\subsection{Coherent access is more than access to samples}
+Three interfaces must be distinguished: samples from a distribution;
+preparation of a specified quantum state; and reversible access to a
+preparation unitary, its inverse, and required controlled versions.
+Each can supply different algorithmic information. A state-preparation
+channel that discards its environment need not supply a coherent inverse.
+An unspecified physical unitary channel also has no observable global
+phase, while a controlled unitary turns that phase into a relative phase.
+
+\begin{lemma}[The phase ambiguity of controlled access]
+An interface giving only the channel $\rho\mapsto U\rho U^\dagger$
+cannot specify a transformation that outputs the controlled unitary
+$\ket{0}\bra{0}\otimes I+\ket{1}\bra{1}\otimes U$ for every chosen matrix
+representative $U$.
+\end{lemma}
+\begin{proof}
+$U=I$ and $U=-I$ define the same input channel. Their requested
+controlled channels act as $I$ and $Z$ on the control register and
+are distinguishable on $\ket{+}$. A transformation of the supplied
+channel cannot distinguish two identical inputs.
+\end{proof}
+
+This elementary obstruction addresses a phase-specific target. Stronger
+no-control results for an unknown unitary are established by
+\citet{araujo2014}. A known circuit decomposition or a specified physical
+reference can provide the missing structure. The controlled oracle in
+the worked decision experiment is therefore a stated interface
+assumption, not a consequence of ordinary sampling access.
+
+\section{Distinguishability, information, and the choice of loss}
+\label{sec:statistical-foundations}
+Quantum states do not have one universally optimal measurement. An
+optimal readout depends on the loss function, the prior or worst-case
+criterion, the number of observations, and whether later experiments may
+depend on earlier outcomes.
+
+\subsection{The operational meaning of trace distance}
+\begin{theorem}[Binary minimum-error discrimination]\label{thm:helstrom-foundations}
+For states $\rho,\sigma$ with priors $\pi,1-\pi$, the minimum average
+error over all measurements and binary decisions is
+\begin{equation}\label{eq:helstrom-foundations}
+ e_\pi^*(\rho,\sigma)=
+ \frac{1-\|\pi\rho-(1-\pi)\sigma\|_1}{2}.
+\end{equation}
+For equal priors this is $(1-D_{\rm tr}(\rho,\sigma))/2$.
+\end{theorem}
+\begin{proof}
+Merge all outcomes deciding $\rho$ into an effect $E$, with
+$0\preceq E\preceq I$. Its success probability is
+$(1-\pi)+\Tr(E\Delta)$, where
+$\Delta=\pi\rho-(1-\pi)\sigma$.
+The spectral decomposition maximizes the trace by taking $E$ to be
+the projector onto the positive eigenspace of $\Delta$.
+Since $\Tr\Delta=2\pi-1$,
+$\Tr\Delta_+=(\|\Delta\|_1+2\pi-1)/2$. Subtraction from one
+gives~\eqref{eq:helstrom-foundations}, the binary quantum detection
+formula \citep{helstrom1969}.
+\end{proof}
+
+For traceless Hermitian $A$, the same spectral argument gives
+$\max_{0\preceq E\preceq I}|\Tr(EA)|=\|A\|_1/2$.
+Consequently trace distance is the largest possible difference in
+measurement-event probabilities. It is also the maximum total
+variation distance over POVMs: group the outcomes with positive
+probability difference into one effect.
+
+\begin{corollary}[Processing cannot improve single-copy discrimination]
+For every channel $\Phi$,
+\begin{equation}
+ D_{\rm tr}(\Phi(\rho),\Phi(\sigma))
+ \leq D_{\rm tr}(\rho,\sigma).
+\end{equation}
+\end{corollary}
+\begin{proof}
+Pull any output effect back through the positive unital map $\Phi^*$.
+It becomes an admissible input effect, so the supremum of its probability
+difference cannot exceed the input supremum.
+\end{proof}
+
+\subsection{Pure-state overlap and deterministic sample budgets}
+For two pure states choose phases so that their overlap is
+$q\in[0,1]$. In their two-dimensional span, write
+$\ket{\phi}=q\ket{\psi}+\sqrt{1-q^2}\ket{\psi^\perp}$.
+The difference of their rank-one projectors has eigenvalues
+$\pm\sqrt{1-q^2}$. This proves~\eqref{eq:tracedistance} and gives,
+for $n$ independent copies and an arbitrary collective measurement,
+\begin{equation}\label{eq:pure-fixed-budget}
+ e_n^*=\frac{1-\sqrt{1-q^{2n}}}{2}.
+\end{equation}
+For $0<q<1$ and $0<\delta<1/2$, the condition $e_n^*\leq\delta$
+is equivalent to
+\[
+ n\geq\frac{\log[1/(4\delta(1-\delta))]}{-2\log q}.
+\]
+Every finite deterministic copy budget has positive error. This does not
+contradict a sequential zero-error protocol with finite mean cost:
+its stopping time can have an unbounded tail. In the symmetric
+unambiguous construction of Proposition~\ref{prop:usd},
+$\Pr(N>n)=q^n$ and $\E N=(1-q)^{-1}$.
+The distinction between expected and deterministic resources is therefore
+mathematical, not terminological.
+
+For a POVM on a pure-state pair, the classical affinity
+$\sum_y\sqrt{p_yq_y}$ is at least the overlap $q$.
+Indeed,
+\[
+ q=\left|\sum_y\bra{\psi} E_y\ket{\phi}\right|
+ \leq\sum_y\sqrt{\bra{\psi} E_y\ket{\psi}\,
+                        \bra{\phi} E_y\ket{\phi}}.
+\]
+Unlike relative entropy, this quantity remains finite at the pure-state
+boundary. Its decrement, rather than a divergent KL rate, controls the
+noiseless cost converse in Theorem~\ref{thm:noiseless-converse}.
+
+\subsection{Relative entropy measures accumulated evidence}
+For finite probability laws $p,q$ define
+$D_{\rm KL}(p\|q)=\sum_y p_y\log(p_y/q_y)$, with the usual support
+convention. It is the expected log-likelihood increment under $p$.
+The opposite direction generally has a different value. Under a common
+classical channel $K$, the log-sum inequality applied separately at each
+output gives
+\[
+ D_{\rm KL}(pK\|qK)\leq D_{\rm KL}(p\|q).
+\]
+For product observations, independence makes their log likelihoods
+additive. Sequential designs preserve this conditional additivity even
+when the observation rule is selected from the preceding transcript.
+
+The quantum relative entropy
+$D(\rho\|\sigma)=\Tr\rho(\log\rho-\log\sigma)$ is finite only
+when the support of $\rho$ is contained in that of $\sigma$.
+The measured relative entropy is
+\[
+ D_M(\rho\|\sigma)=\sup_{\{E_y\}}
+ D_{\rm KL}\bigl(\{\Tr\rho E_y\}\|\{\Tr\sigma E_y\}\bigr).
+\]
+This is the evidence accessible from one measured copy, whereas the
+operator expression need not be attainable by a single-copy readout.
+Part~\ref{part:operational} makes that distinction quantitative in a
+two-state family. Trace distance optimizes immediate binary decision
+error; relative entropy optimizes the long-run directed evidence rate.
+The optimizers need not coincide.
+
+\subsection{Accessible classical information is limited by dimension}
+Let a classical label $X=x$ select state $\rho_x$ with probability $p_x$,
+and put $\bar\rho=\sum_xp_x\rho_x$. For a measurement outcome $Y$,
+the Holevo bound is
+\begin{equation}\label{eq:holevo-foundations}
+ I(X:Y)\leq\chi:=S(\bar\rho)-\sum_xp_xS(\rho_x)
+ \leq\log d,\qquad S(\rho)=-\Tr\rho\log\rho,
+\end{equation}
+where $d$ is the transmitted system dimension \citep{holevo1973}.
+One way to see the first inequality is to write
+$I(X:Y)=\sum_xp_xD_{\rm KL}(p_{Y|x}\|p_Y)$, apply measurement
+data processing to each term, and use
+$\sum_xp_xD(\rho_x\|\bar\rho)=\chi$.
+The last inequality follows from $0\leq S(\rho_x)$ and
+$S(\bar\rho)\leq\log d$.
+Thus an $n$-qubit system, without preshared entanglement or additional
+side information, conveys at most $n$ bits of accessible classical
+information per transmitted system. This limits readout; it does not
+rule out computing a useful small output from a large structured input.
+
+\section{Sequential experiments with an explicit resource price}
+\label{sec:general-sequential}
+The information-per-cost principle does not depend on a quantum circuit.
+It becomes a quantum resource statement only after the action set and
+observation laws have been derived from the permitted physical operations.
+
+\subsection{A controlled experiment and its stopped likelihood}
+Let $h\in\{+,-\}$. At step $j$ a protocol chooses action $a_j$ from
+the classical history, pays $c(a_j)\geq c_{\min}>0$, and observes an
+outcome with conditional law $p_{h,a_j}$. It may randomize using
+hypothesis-independent coins and stop at $N$, with finite expected
+cost under both hypotheses. Assume common support and a uniform bound
+on $|\log(p_{+,a}(y)/p_{-,a}(y))|$.
+Its log likelihood is
+\begin{equation}\label{eq:general-loglikelihood}
+ Z_N=\sum_{j=1}^N\log\frac{p_{+,a_j}(Y_j)}{p_{-,a_j}(Y_j)}.
+\end{equation}
+The action-selection and stopping kernels cancel in the likelihood
+ratio because they are the same functions of the observed history
+under either hypothesis. They can change what is observed but cannot
+create evidence without observations.
+
+Define the directed rate ceilings
+\[
+ J_+=\sup_a\frac{D_{\rm KL}(p_{+,a}\|p_{-,a})}{c(a)},\qquad
+ J_-=\sup_a\frac{D_{\rm KL}(p_{-,a}\|p_{+,a})}{c(a)}.
+\]
+\begin{theorem}[A costed sequential testing converse]\label{thm:general-converse}
+If both decision errors are at most $0<\delta<1/2$, then
+\begin{equation}\label{eq:general-cost-converse}
+ \max_h\E_h\sum_{j=1}^N c(a_j)
+ \geq\max\left\{\frac{k_\delta}{J_+},
+                \frac{k_\delta}{J_-}\right\},\qquad
+ k_\delta=(1-2\delta)\log\frac{1-\delta}{\delta}.
+\end{equation}
+The convention $k_\delta/0=+\infty$ expresses impossibility when one
+directed rate is zero.
+\end{theorem}
+\begin{proof}
+Finite expected cost gives $\E_hN<\infty$. Bounded increments justify
+the stopped likelihood identity and interchange of summation and
+expectation. Under $h=+$,
+\[
+ D_{\rm KL}(P_+^{\rm stop}\|P_-^{\rm stop})
+ =\E_+Z_N
+ =\E_+\sum_{j=1}^N
+      D_{\rm KL}(p_{+,a_j}\|p_{-,a_j})
+ \leq J_+\E_+\sum_{j=1}^Nc(a_j).
+\]
+Coarsen the terminal transcript to the decision. If its errors are
+$\alpha,\beta\leq\delta$, data processing gives the lower bound
+$\operatorname{kl}(1-\alpha,\beta)\geq
+\operatorname{kl}(1-\delta,\delta)=k_\delta$.
+The minimization over this rectangle follows by differentiating binary
+KL in its two arguments while $1-\alpha>\beta$.
+Reverse the hypotheses to obtain the $J_-$ inequality.
+\end{proof}
+
+This is a costed version of the information argument underlying
+sequential likelihood-ratio testing and controlled sensing
+\citep{wald1945,chernoff1959,nitinawarat2015}. It is a converse, not an
+automatic achievability theorem. If different actions maximize the two
+directions, an adaptive controller must select the appropriate action
+using incomplete information about the true hypothesis. Reflection
+symmetry makes that issue tractable in Theorem~\ref{thm:measured}.
+
+\subsection{Finite confidence, asymptotic rates, and resource frontiers}
+An asymptotic statement $C_\delta/\log(1/\delta)\to1/J$ describes
+the leading coefficient for fixed experiment parameters. It does not
+remove overshoot, integer-depth choices, or the learning cost of selecting
+an action at finite confidence. In particular, two methods may have
+ordered limiting rates and still require a separate finite-confidence
+comparison. The cost interval $[L_\delta,U_\delta]$ records both a
+converse and an implementable protocol.
+
+For methods $A,B$, the condition $U_A<L_B$ certifies that $A$ wins
+throughout the corresponding minimax cost intervals. The condition
+$L_A>U_B$ certifies that it loses. Overlapping intervals are unresolved
+by those bounds; they are not evidence of equal cost. Multiplying only
+one oracle price can change the ordering without changing either
+algorithm's query complexity.
+
+Suppose an action consumes a resource vector $v(a)\in\R_+^m$, including
+preparation, queries, measurement, and classical processing. A positive
+price vector $w$ yields $c_w(a)=w^\top v(a)$ and rate
+$J(w)=\sup_a d(a)/(w^\top v(a))$. Changing $w$ explores different
+resource tradeoffs; there is no implementation-independent conversion
+from queries to elapsed time. A protocol dominated in every expected
+resource coordinate cannot become optimal for a strictly positive price
+vector. The affine price $c_0+c_1t$ below is a transparent two-resource
+specialization of this general viewpoint.
+
+The order of limits is equally substantive. Fixed positive noise and
+$\delta\downarrow 0$ retain bounded single-block likelihood increments
+and produce logarithmic confidence cost. At zero noise, disjoint support
+of selected outcomes can make those increments infinite and permit
+finite-mean exact discrimination. A uniform result must address both
+mechanisms rather than substitute zero noise into a full-rank formula.

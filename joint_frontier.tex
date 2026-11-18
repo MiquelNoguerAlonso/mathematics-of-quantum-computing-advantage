@@ -1,0 +1,374 @@
+\subsection{A matching measured-information bound}
+\label{sec:joint-frontier}
+The quantum-relative-entropy upper bound is too large to determine the
+readout gain when both the signal angle and the noise are small. A
+likelihood-ratio bound combined with fidelity retains the missing angular
+dependence. The ingredients are standard divergence comparison and
+measurement fidelity \citep{sason2016,fuchs1995}; the following proofs
+specialize them explicitly to the present model.
+
+\begin{lemma}[Relative entropy from affinity and a ratio bound]
+\label{lem:kl-affinity}
+Let $p,q$ be strictly positive probability vectors with $p_y/q_y\leq R$
+for every $y$, where $R\geq1$. Put $a(p,q)=\sum_y\sqrt{p_yq_y}$. Then
+\begin{equation}\label{eq:kl-affinity}
+ D_{\rm KL}(p\|q)\leq2(2+\log R)[1-a(p,q)].
+\end{equation}
+\end{lemma}
+\begin{proof}
+For $g(v)=v^2\log(v^2)-v^2+1$, one has $g(1)=g'(1)=0$ and
+$g''(v)=4+4\log v\leq4+2\log R$ for $0<v\leq\sqrt R$.
+Taylor's integral formula along the segment from $1$ to $v$ gives
+$g(v)\leq(2+\log R)(v-1)^2$. Substitute
+$v=\sqrt{p_y/q_y}$, multiply by $q_y$, and sum. The linear terms
+cancel because both probability vectors have total mass one, while
+$\sum_y(\sqrt{p_y}-\sqrt{q_y})^2=2[1-a(p,q)]$.
+\end{proof}
+
+\begin{lemma}[Fidelity and generalized eigenvalues of a phase block]
+\label{lem:block-fidelity}
+For a fixed depth and $\gamma>0$, abbreviate
+$r=r_t$, $\vartheta=\vartheta_t$, $s=r\sin\vartheta$, and put
+\begin{equation}\label{eq:eta-G}
+ \eta_t=\frac{s_t^2}{1-r_t^2},\qquad
+ G_t=1+\log(1+\eta_t),\qquad
+ R_t=(\sqrt{1+\eta_t}+\sqrt{\eta_t})^2.
+\end{equation}
+Every nonzero POVM effect has outcome likelihood ratio in
+$[R_t^{-1},R_t]$, and every measurement has affinity at least
+\begin{equation}\label{eq:block-fidelity}
+ F_t=\|\sqrt{\rho_{+,t}}\sqrt{\rho_{-,t}}\|_1
+     =\sqrt{1-s_t^2}.
+\end{equation}
+The fidelity statement also holds at $\gamma=0$.
+\end{lemma}
+\begin{proof}
+For any density matrices $\rho,\sigma$ and any POVM, polar decomposition
+and the Hilbert--Schmidt Cauchy--Schwarz inequality give
+\[
+ \|\sqrt\rho\sqrt\sigma\|_1
+ =\max_U|\Tr(U\sqrt\rho\sqrt\sigma)|
+ \leq\sum_y|\Tr(U_\star\sqrt\rho E_y\sqrt\sigma)|
+ \leq\sum_y\sqrt{\Tr(\rho E_y)\Tr(\sigma E_y)}.
+\]
+Here $U_\star$ is a maximizing unitary. For two-dimensional positive
+matrices, the square of the trace of a positive square root is its trace
+plus twice the square root of its determinant. Consequently
+\[
+ F_t^2=\Tr(\rho_{+,t}\rho_{-,t})
+            +2\sqrt{\det\rho_{+,t}\det\rho_{-,t}}
+ =\frac{1+r^2\cos(2\vartheta)}2+\frac{1-r^2}2
+ =1-s^2.
+\]
+For full-rank states, the generalized eigenvalues have product one and
+sum $2+4\eta_t$, as in Proposition~\ref{prop:residual}. They are
+$R_t$ and $R_t^{-1}$. The corresponding operator inequalities
+$R_t^{-1}\rho_{-,t}\preceq\rho_{+,t}\preceq R_t\rho_{-,t}$,
+traced against an arbitrary positive effect, prove the ratio bound.
+\end{proof}
+
+\begin{theorem}[Uniform pointwise measured-information law]
+\label{thm:pointwise-complete}
+For every $\gamma>0$ and allowed depth,
+\begin{equation}\label{eq:pointwise-complete}
+ \frac14s_t^2G_t\leq d_M(t)
+ \leq2(2+\log R_t)(1-\sqrt{1-s_t^2})
+ \leq7s_t^2G_t.
+\end{equation}
+Thus $d_M(t)/d_t\asymp1+\log(1+\eta_t)$, with universal constants
+throughout the stated model. The lower order is attained by the better
+of $Y$ and the recorded random-axis readout; adaptation is unnecessary
+for this constant-factor statement.
+\end{theorem}
+\begin{proof}
+Apply Lemmas~\ref{lem:kl-affinity} and~\ref{lem:block-fidelity} to every
+POVM and take the supremum. Since
+$R_t\leq4(1+\eta_t)$ and $1-\sqrt{1-s_t^2}\leq s_t^2$,
+\[
+ 2(2+\log R_t)(1-\sqrt{1-s_t^2})
+ \leq2s_t^2[2+\log4+\log(1+\eta_t)]\leq7s_t^2G_t.
+\]
+For the lower bound, $d_t\geq2s_t^2$, and
+\eqref{eq:axisinfo} gives
+\[
+ d_A(t)\geq\frac{s_t^2}{2r_t}
+       \log\!\left(1+\frac{2(1+r_t)}{r_t}\eta_t\right)
+ \geq\frac{s_t^2}{2}\log(1+\eta_t).
+\]
+The maximum of these two lower bounds is at least their average,
+$s_t^2[1+\tfrac14\log(1+\eta_t)]\geq\tfrac14s_t^2G_t$.
+Finally $2s_t^2\leq d_t\leq K_{\rm sig}s_t^2$.
+\end{proof}
+
+\subsection{An exact counting test with inconclusive observations}
+\label{sec:conclusive-counting}
+Stopping at the first conclusive outcome, as in
+Proposition~\ref{prop:crossover}, is only one use of the three-outcome
+measurement. Accumulating its signed conclusive outcomes removes that
+construction's error floor at every positive noise rate.
+
+\begin{proposition}[Repeated conclusive counting]
+\label{prop:conclusive-counting}
+Fix an allowed depth and $\gamma>0$. Put $q_t=\cos\vartheta_t$ and
+\begin{align}
+ u_t&=r_t(1-q_t)+\frac{1-r_t}{2(1+q_t)},&
+ v_t&=\frac{1-r_t}{2(1+q_t)},\notag\\
+ \ell_{E,t}&=\log\frac{u_t}{v_t}
+ =\log\!\left(1+\frac{2r_t\sin^2\vartheta_t}{1-r_t}\right),&
+ b_{E,t}&=\left\lceil\frac{\Lambda_\delta}{\ell_{E,t}}\right\rceil.
+ \label{eq:conclusive-increments}
+\end{align}
+Apply the POVM of Proposition~\ref{prop:usd} independently to each fresh
+block. Record $+1,-1,0$ for its respective outcomes $+,-,?$. Stop when
+the accumulated signed count reaches either $b_{E,t}$ or $-b_{E,t}$.
+The error and expected cost under either hypothesis are exactly
+\begin{equation}\label{eq:conclusive-counting}
+ \delta_{E,t}=\frac1{1+e^{b_{E,t}\ell_{E,t}}}\leq\delta,
+ \qquad
+ U_E(t,\delta)=
+ \frac{c(t)b_{E,t}}{r_t(1-q_t)}
+       \tanh\!\left(\frac{b_{E,t}\ell_{E,t}}2\right).
+\end{equation}
+Writing $U_Y(t,\delta)$ for the fixed-depth cost in
+\eqref{eq:mainfrontier}, one has the explicit bound
+\begin{equation}\label{eq:local-finite-upper}
+ C_{M,\delta}^\star
+ \leq\min_t\min\{U_Y(t,\delta),U_E(t,\delta)\}
+ \leq\min_t\frac{4c(t)}{s_t^2}
+              \left(1+\frac{\log(1/\delta)}{G_t}\right).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Under $h=+$ the three probabilities are $u_t,v_t,1-u_t-v_t$; under
+$h=-$ the first two are interchanged. Inconclusive observations have
+zero log likelihood. Conditional on a conclusive observation, the signed
+walk has upward probability $u_t/(u_t+v_t)$ and likelihood increment
+$\ell_{E,t}$. The gambler's-ruin calculation therefore gives the stated
+error. Each conclusive observation takes a geometric number of blocks
+with mean $(u_t+v_t)^{-1}$. Applying the same stopping-time calculation
+as in Theorem~\ref{thm:frontier} gives the displayed cost because
+$u_t-v_t=r_t(1-q_t)>0$. In particular, the mean stopping time is finite.
+
+Set $B=\log(1/\delta)$. If $\eta_t\geq1$, then
+$\ell_{E,t}\geq\log(1+4\eta_t)\geq1$ and
+$G_t\leq2\ell_{E,t}$. Thus $b_{E,t}\leq1+2B/G_t$ and
+\[
+ U_E(t,\delta)\leq\frac{2c(t)}{s_t^2}
+                  \left(1+\frac{2B}{G_t}\right),
+\]
+where $s_t^2/[r_t(1-q_t)]=r_t(1+q_t)\leq2$.
+If $\eta_t<1$, then $G_t<2$, and
+\[
+ U_Y(t,\delta)\leq\frac{c(t)}{2s_t^2}(B+L_{\rm sig})
+ \leq\frac{c(t)}{s_t^2}\left(1+\frac{B}{G_t}\right),
+\]
+using $L_{\rm sig}<2$. These two bounds prove
+\eqref{eq:local-finite-upper}.
+\end{proof}
+
+\subsection{The uniform noise--depth--confidence law}
+\label{sec:uniform-cost}
+An information-rate lower bound alone can tend to zero as noise
+vanishes. A second lower bound accounts for the cost of acquiring a
+decisive observation in the first place.
+
+\begin{proposition}[An affinity converse at every noise level]
+\label{prop:full-affinity}
+For $0\leq\gamma\leq1$, define
+\begin{equation}\label{eq:affinity-rate}
+ J_F=\max_{t\in\mathcal D_\mu}
+       \frac{1-\sqrt{1-s_t^2}}{c(t)},\qquad
+ h_\delta=1-2\sqrt{\delta(1-\delta)}.
+\end{equation}
+Every admissible adaptive protocol obeys
+\begin{equation}\label{eq:full-affinity-bound}
+ C_{M,\delta}^\star\geq\frac{h_\delta}{J_F}.
+\end{equation}
+For positive noise this combines with the information converse to give
+\begin{equation}\label{eq:joint-converse}
+ C_{M,\delta}^\star\geq
+ \max\left\{\frac{h_\delta}{J_F},\frac{k_\delta}{I_M}\right\}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+For every living history, Lemma~\ref{lem:block-fidelity} gives
+$a_z\geq\sqrt{1-s_{t_z}^2}$ and hence
+$1-a_z\leq J_Fc(t_z)$. Substitute this inequality in the complete
+stopped-affinity telescoping argument~\eqref{eq:stopped-affinity}.
+Its truncation, finite-cost passage to the limit, and binary-decision
+bound apply unchanged to the mixed states. Therefore
+$h_\delta\leq J_F\max_h\E_h C$. The second lower bound is
+Theorem~\ref{thm:measured}.
+\end{proof}
+
+\begin{theorem}[Uniform resource law for optimal single-block readout]
+\label{thm:uniform-cost}
+Retain the original phase cutoff, $0<\mu\leq1/8$, $D\geq1$,
+$c_0\geq0$, $c_1>0$, and $0<\delta\leq1/4$. For $0<\gamma\leq1$, put
+\begin{equation}\label{eq:joint-scales}
+ \reff=\min\{D,\mu^{-1},\gamma^{-1}\},\quad
+ A_{\rm eff}=\frac1{\mu^2}
+       \left(\frac{c_0}{\reff^2}+\frac{c_1}{\reff}\right),\quad
+ G_{\rm eff}=1+\log\!\left(1+\frac{\mu^2\reff}{\gamma}\right).
+\end{equation}
+There are universal positive constants, independent of every displayed
+model parameter and of $\delta$, such that
+\begin{equation}\label{eq:uniform-rates}
+ J_F\asymp A_{\rm eff}^{-1},\qquad
+ I_M\asymp\frac{G_{\rm eff}}{A_{\rm eff}},\qquad
+ \frac{I_M}{I_Y}\asymp G_{\rm eff},
+\end{equation}
+and
+\begin{equation}\label{eq:uniform-cost}
+ \boxed{\displaystyle
+ C_{M,\delta}^\star\asymp A_{\rm eff}
+       \left[1+\frac{\log(1/\delta)}{G_{\rm eff}}\right].}
+\end{equation}
+The sharpened universal constants proved in Theorem~\ref{thm:sharp-global} give
+\begin{equation}\label{eq:explicit-uniform-constants}
+ \frac{A_{\rm eff}}{70}
+ \left(1+\frac{\log(1/\delta)}{G_{\rm eff}}\right)
+ \leq C_{M,\delta}^\star\leq
+ 42 A_{\rm eff}\left(1+\frac{\log(1/\delta)}{G_{\rm eff}}\right).
+\end{equation}
+The displayed upper bound is achieved at the single fixed depth
+$t_\sharp=\min\{\overline D,\lceil\reff/2\rceil\}$, choosing $Y$ if
+$\eta_{t_\sharp}<1$ and conclusive counting otherwise. For $\gamma=0$,
+define $\reff=\min\{D,\mu^{-1}\}$ and $G_{\rm eff}=+\infty$,
+and define the confidence-dependent term to be zero;
+the cost law still holds, including $\delta=0$, by
+Theorem~\ref{thm:noiseless-converse}. The finite-confidence comparison
+is up to universal constants, not an exact minimax value.
+\end{theorem}
+
+The explicit upper-to-lower multiplier is 2940. These constants are
+analytical and uniform, but they are not numerically sharp. Across the 246 parameter cases supplied with
+Section~\ref{sec:researchresults}, the sharper converse and attainable
+protocol bracket $C_{M,\delta}^\star$ between approximately $0.0584$ and
+$4.312$ times the displayed scale. These are numerical evaluations on
+the stated finite grid, not universal constants or interval certificates;
+Figure~\ref{fig:joint-frontier} shows the brackets in a depth-limited slice.
+
+\begin{proof}
+Write $R=\reff$ temporarily and set
+$t_0=\max\{1,\lfloor\pi R/8\rfloor\}$ for this scaling argument.
+This depth is admissible and
+$\pi R/16\leq t_0\leq R$, with $\gamma t_0\leq1$.
+For every allowed $t$ with $\gamma t\leq1$, the sine bounds on
+$0<2\mu t\leq\pi/4$ give
+\begin{equation}\label{eq:local-effective-scales}
+ s_t^2\asymp\mu^2t^2,\qquad
+ \eta_t=\frac{\sin^2(2\mu t)}{e^{2\gamma t}-1}
+        \asymp\frac{\mu^2t}{\gamma}.
+\end{equation}
+Here $e^{2u}-1\asymp u$ uniformly on $0<u\leq1$.
+At $t_0$ this yields
+\begin{equation}\label{eq:t0-scales}
+ \frac{s_{t_0}^2}{c(t_0)}\asymp A_{\rm eff}^{-1},\qquad
+ G_{t_0}\asymp G_{\rm eff}.
+\end{equation}
+Multiplication of the argument of $\log(1+x)$ by a fixed positive
+constant changes $1+\log(1+x)$ by at most constant factors.
+
+For the converse rate bounds, if $t\leq R$, use
+$s_t^2\leq4\mu^2t^2$, $\eta_t\leq2\mu^2t/\gamma$, and the
+monotonicity of $t^2/(c_0+c_1t)$ and of $\log(1+x)$ to obtain
+\[
+ \frac{s_t^2}{c(t)}\lesssim A_{\rm eff}^{-1},\qquad
+ \frac{s_t^2G_t}{c(t)}\lesssim
+                A_{\rm eff}^{-1}G_{\rm eff}.
+\]
+An allowed $t>R$ can occur only when $R=\gamma^{-1}$. Put
+$u=\gamma t>1$. Then
+\[
+ \eta_t\leq\frac1{2(e^{2u}-1)},\qquad
+ \frac{s_t^2}{c(t)}\leq
+ \frac{4\mu^2R^2}{c(R)}u^2e^{-2u}\lesssim A_{\rm eff}^{-1}.
+\]
+Thus $G_t$ is uniformly bounded in this tail. Combining these estimates
+with~\eqref{eq:t0-scales},
+$s_t^2/2\leq1-\sqrt{1-s_t^2}\leq s_t^2$, and
+Theorem~\ref{thm:pointwise-complete} proves the first two rate statements.
+The last follows from $d_t\asymp s_t^2$ and the same optimization.
+
+Uniformly for $\delta\leq1/4$,
+$h_\delta\geq1-\sqrt3/2>0$ and
+$k_\delta\geq\tfrac14\log(1/\delta)$. The rate bounds already proved
+above and the joint converse therefore
+lower-bounds the cost by a constant times
+$A_{\rm eff}\max\{1,\log(1/\delta)/G_{\rm eff}\}$.
+The maximum and the sum differ by at most a factor of two.
+For achievability, evaluate~\eqref{eq:local-finite-upper} at $t_0$
+and apply~\eqref{eq:t0-scales}. This proves the upper order uniformly
+in the joint limit of noise, depth, signal, and confidence.
+The improved numerical constants require keeping the depth ratio and
+noise attenuation together; Theorem~\ref{thm:sharp-global} supplies that
+argument and the displayed constants $1/70$ and $42$.
+At zero noise
+the previously proved noiseless resource law gives exactly the stated
+extension.
+\end{proof}
+
+\begin{corollary}[The depth-limited regime is characterized]
+\label{cor:depth-complete}
+If $D\leq\min\{\mu^{-1},\gamma^{-1}\}$ and $\gamma>0$, then
+\begin{align}
+ \frac{I_M}{I_Y}&\asymp1+\log(1+\mu^2D/\gamma),
+ \label{eq:depth-information}\\
+ C_{M,\delta}^\star&\asymp
+ \frac1{\mu^2}\left(\frac{c_0}{D^2}+\frac{c_1}{D}\right)
+ \left[1+\frac{\log(1/\delta)}{1+\log(1+\mu^2D/\gamma)}\right].
+ \label{eq:depth-complete}
+\end{align}
+The phase cutoff may make the largest actual depth smaller than $D$;
+the constant-factor comparison remains uniform because $t_0\asymp D$
+is admissible. The gain is bounded when $\mu^2D\lesssim\gamma$ and
+grows logarithmically when $\mu^2D/\gamma\to\infty$.
+\end{corollary}
+\begin{proof}
+Here $\reff=D$, so substitute into Theorem~\ref{thm:uniform-cost}.
+\end{proof}
+
+\begin{center}
+\small
+\begin{tabular}{p{0.26\linewidth}p{0.30\linewidth}p{0.32\linewidth}}
+\toprule
+Regime & Quantum ratio $I_Q/I_Y$ & Measured ratio $I_M/I_Y$\\
+\midrule
+Depth limited, $\reff=D$
+& $1+\log(1/(\gamma D))$
+& $1+\log(1+\mu^2D/\gamma)$\\
+Coherent, $\reff=\mu^{-1}$
+& $1+\log(\mu/\gamma)$
+& $1+\log(1+\mu/\gamma)$\\
+Noise limited, $\reff=\gamma^{-1}$
+& $1$ & $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+All entries are up to universal constants for positive noise. The
+quantum-ratio column is Proposition~\ref{prop:regimegap}; the
+measured-ratio column follows from Theorem~\ref{thm:uniform-cost}.
+In every row the cost is $A_{\rm eff}[1+\log(1/\delta)/G_{\rm eff}]$
+up to constants. At zero noise $G_{\rm eff}=+\infty$ by convention and
+the cost is comparable to $A_{\rm eff}$, including at zero error.
+
+The additive term in~\eqref{eq:uniform-cost} is essential. It prevents
+the KL-based approximation from predicting a vanishing decision cost
+as the noise tends to zero. The transition occurs when
+$\log(1/\delta)$ is comparable to $G_{\rm eff}$; the earlier
+single-conclusive-outcome construction is a special case of the exact
+counting protocol above. At fixed positive noise the leading
+high-confidence constant remains exactly $1/I_M$, as in
+Theorem~\ref{thm:measured}; the uniform law controls parameter limits
+that this fixed-model asymptotic does not.
+
+At positive noise, zero error with finite expected cost is impossible.
+Every nonzero measurement effect has positive probability under both
+hypotheses. On each event of stopping after a fixed finite number of
+blocks, the transcript laws are therefore mutually absolutely continuous.
+Their countable union has probability one under any finite-cost protocol,
+so a terminal event cannot identify one hypothesis with certainty and
+have probability zero under the other. This is consistent with the
+divergence of~\eqref{eq:uniform-cost} as $\delta\downarrow 0$ at fixed
+$\gamma>0$, and with its separate noiseless extension.

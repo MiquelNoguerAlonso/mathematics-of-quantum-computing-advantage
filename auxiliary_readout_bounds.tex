@@ -1,0 +1,131 @@
+\section{Auxiliary quantum and chi-square bounds}
+\label{app:auxiliary-readout}
+These comparisons retain useful constants and relate the measured
+frontier to the quantum-relative-entropy relaxation. The uniform
+measured-information law in Theorem~\ref{thm:pointwise-complete} gives
+the sharper order needed in the main argument.
+
+\begin{proposition}[Optimized information gap]\label{prop:regimegap}
+For $0<\gamma\leq1$ and the original depth set, uniformly in
+$0<\mu\leq1/8$, $D\geq1$, $c_0\geq0$, $c_1>0$,
+\begin{equation}\label{eq:optimizedgap}
+ \frac{I_Q}{I_Y}\asymp
+ \mathcal L:=1+\log\frac1{\gamma\reff},
+ \qquad \reff=\min\{D,\mu^{-1},\gamma^{-1}\}.
+\end{equation}
+Thus the ratio between the $Y$ lower bound $k_\delta/I_Y$ and the
+quantum lower bound $k_\delta/I_Q$ has this order. This compares
+information bounds; it does not identify $I_M$ with $I_Q$.
+\end{proposition}
+\begin{proof}
+On the phase-restricted interval, $\sin\vartheta_t\asymp\mu t$.
+Also, for $u>0$,
+\[
+ e^{-u}\operatorname{artanh}(e^{-u})
+ \asymp e^{-2u}\left(1+\log_+\frac1u\right),
+ \qquad \log_+x=\max\{0,\log x\}.
+\]
+For $u\leq1$ this follows from
+$1-e^{-u}\asymp u$ and
+$2\operatorname{artanh}r=\log((1+r)/(1-r))$;
+for $u\geq1$ use $r\leq\operatorname{artanh}r\leq r/(1-r^2)$.
+Consequently $I_Q$ is comparable to
+\[
+ \mu^2\max_{t\in\mathcal D_\mu}
+ \frac{t^2}{c_0+c_1t}e^{-2\gamma t}
+       \left(1+\log_+\frac1{\gamma t}\right).
+\]
+The proof of Corollary~\ref{cor:effective} supplies an allowed
+$t_0\asymp\reff$ with $\gamma t_0\leq1$. Evaluating there gives a lower
+bound proportional to
+$\mu^2\reff^2\mathcal L/(c_0+c_1\reff)$.
+For $t\leq\reff$, put $v=t/\reff\leq1$. The ratio of the cost fractions
+is at most $v$, and
+$v(\mathcal L+\log(1/v))\leq\mathcal L+1/e$.
+If an allowed $t>\reff$ exists, then $\reff=\gamma^{-1}$.
+Writing $v=t/\reff>1$, the ratio of cost fractions is at most $v^2$,
+whereas $v^2e^{-2v}$ is bounded and the logarithmic term vanishes.
+These give the matching upper bound. Finally
+$I_Y\asymp\mu^2\reff^2/(c_0+c_1\reff)$ by the same sine and
+signal-information estimates used in Corollary~\ref{cor:effective}.
+\end{proof}
+
+
+
+\begin{lemma}[Measured divergence and the SLD chi-square bound]
+\label{lem:sld-chi}
+Let $\rho,\sigma$ be density matrices with $\sigma$ of full rank, and let
+$L$ be the Hermitian solution of $(\sigma L+L\sigma)/2=\rho-\sigma$. For
+every POVM with outcome laws $p$ under $\rho$ and $q$ under $\sigma$,
+\begin{equation}
+D_{\mathrm{KL}}(p\|q)\le \log\bigl(1+\operatorname{Tr}[(\rho-\sigma)L]\bigr).
+\label{eq:sld-chi}
+\end{equation}
+For the block states in~\eqref{eq:blockstates}, with $r=r_t$, $\vartheta=\vartheta_t$ and
+$s=r\sin\vartheta$,
+\begin{equation}
+\operatorname{Tr}[(\rho_{+,t}-\rho_{-,t})L]
+=4s^2\left(1+\frac{s^2}{1-r^2}\right).
+\label{eq:sld-value}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Discard zero effects; full rank then gives $q_y>0$. For an effect $E\succeq 0$,
+$\operatorname{Tr}[(\rho-\sigma)E]=\operatorname{Re}\operatorname{Tr}[\sigma LE]$,
+and the Cauchy--Schwarz inequality applied to
+$\sigma^{1/2}E^{1/2}$ and $\sigma^{1/2}LE^{1/2}$ gives
+$(\operatorname{Tr}[(\rho-\sigma)E])^2\le
+\operatorname{Tr}[\sigma E]\operatorname{Tr}[EL\sigma L]$.
+Summing over the effects,
+\[
+\chi^2(p\|q)=\sum_y\frac{(p_y-q_y)^2}{q_y}\le
+\operatorname{Tr}[L\sigma L]=\operatorname{Tr}[(\rho-\sigma)L].
+\]
+Jensen's inequality gives $D_{\mathrm{KL}}(p\|q)\le\log(1+\chi^2(p\|q))$,
+which proves \eqref{eq:sld-chi}.
+For the block states, $\rho_{+,t}-\rho_{-,t}=sY$ and
+$\sigma=\rho_{-,t}=\tfrac12(I+a\cdot\vec\sigma)$ with
+$a=r(\cos\vartheta,-\sin\vartheta,0)$. Writing $L=l_0I+l\cdot\vec\sigma$,
+the defining equation reads $l_0+a\cdot l=0$ and $l+l_0a=2s\,\hat y$.
+Since $a\cdot\hat y=-r\sin\vartheta$, this gives $l_0=2s^2/(1-r^2)$, and
+$\operatorname{Tr}[sY L]=2s\,\hat y\cdot l=4s^2+2l_0s^2$.
+\end{proof}
+
+The quadratic form above is the standard Bures (symmetric-logarithmic-derivative)
+chi-square divergence; see \citet[Definition 2.26, Eq.~(33)]{flammia2024}. The lemma
+specializes its measurement bound to the present qubit family.
+
+\begin{proposition}[Two-sided readout gap at a fixed depth]
+\label{prop:readout-gap}
+Let $\gamma>0$, $t\in\mathcal D_\mu$, $r=r_t$, $\vartheta=\vartheta_t$,
+$s=r\sin\vartheta$.
+\begin{enumerate}
+\item The supremum over single-block POVMs satisfies
+$d_M(t)\le\log\bigl(1+4s^2[1+s^2/(1-r^2)]\bigr)$.
+\item If $\sin^2\vartheta\le 1-r$, then $d_t\le d_M(t)\le 3\,d_t$.
+\item In all cases,
+\begin{equation}
+\max\left\{1,\;\frac{1}{2K_{\mathrm{sig}}\,r}
+\log\!\left(1+\frac{2r\sin^2\vartheta}{1-r}\right)\right\}
+\le\frac{d_M(t)}{d_t}\le\frac{\operatorname{artanh} r}{r}.
+\label{eq:gap-two-sided}
+\end{equation}
+The displayed lower estimate is certified by the better of the $Y$ readout
+and the recorded random-axis readout in~\eqref{eq:axisinfo}; equality is not asserted.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Part~1 follows by taking the supremum in Lemma~\ref{lem:sld-chi}. For part~2, the hypothesis gives
+$s^2/(1-r^2)=r^2\sin^2\vartheta/[(1-r)(1+r)]\le r^2/(1+r)\le 1/2$, so
+$d_M(t)\le 6s^2$, while $d_t\ge 2s^2$ by Proposition~\ref{prop:boost-envelope}.
+For part~3, the upper bound is~\eqref{eq:pointwisegap}. In~\eqref{eq:axisinfo},
+$p-q=r\sin^2\vartheta$, $p/q\ge 1$, and
+$(1-q)/(1-p)=1+2r\sin^2\vartheta/(1-r)$, hence
+$d_A(t)\ge \tfrac12 r\sin^2\vartheta
+\log\bigl(1+2r\sin^2\vartheta/(1-r)\bigr)$.
+Divide by $d_t\le K_{\mathrm{sig}}s^2=K_{\mathrm{sig}}r^2\sin^2\vartheta$
+and use $d_M(t)\ge\max\{d_t,d_A(t)\}$.
+\end{proof}
+

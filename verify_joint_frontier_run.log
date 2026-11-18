@@ -1,0 +1,26 @@
+{
+  "status": "All uniform-frontier checks passed",
+  "arithmetic": "70 decimal digits for scalar and cost bounds; float64 for independent matrix and Markov checks",
+  "counts": {
+    "scalar_divergence": 480,
+    "arbitrary_povm": 320,
+    "pointwise_cases": 180,
+    "projective_candidates": 6300,
+    "absorbing_markov_systems": 159,
+    "mixed_adaptive_trees": 60,
+    "full_parameter_cases": 246,
+    "noiseless_boundary_limits": 6,
+    "figure_parameter_cases": 140
+  },
+  "explicit_constants": {
+    "lower": 0.002232142857142857,
+    "upper": "2372.98788298169408740854023618995735787653185942183580990210760930466"
+  },
+  "max_markov_relative_time_error": 6.417089082333405e-14,
+  "max_markov_absolute_probability_error": 1.2125717097077882e-15,
+  "grid_range": {
+    "minimum_lower_over_scale": 0.058395013366613145,
+    "maximum_upper_over_scale": 4.3117908800498626
+  },
+  "note": "Finite checks supplement the proof. Constants are derived analytically, not fitted to this grid. No claim of formal proof-assistant verification."
+}

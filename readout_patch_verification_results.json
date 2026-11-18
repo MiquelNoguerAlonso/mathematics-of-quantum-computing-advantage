@@ -1,0 +1,28 @@
+{
+  "status": "All readout-patch checks passed",
+  "counts": {
+    "block_sld": 4000,
+    "random_povm": 4000,
+    "spectral_chi_saturation": 4000,
+    "general_density_pairs": 250,
+    "readout_gap": 4000,
+    "factor_three": 2810,
+    "noiseless_resource": 4000,
+    "global_noise_condition": 4000,
+    "independent_table_depths": 285
+  },
+  "max_relative_sld_error": 4.178019426779602e-09,
+  "maximum_constructive_to_14_bound": 0.41762767771781706,
+  "independent_cost_bounds": {
+    "Ideal": 69.04973303795786,
+    "Shallow": 7815.167212888924,
+    "Noisy": 2097.127201039732,
+    "Costly": 2576.7084053071403,
+    "Restarts": 1134.694432812292,
+    "amplitude_0.004": 1655.2948005344672,
+    "amplitude_0.015": 4382.908671267484,
+    "amplitude_0.02": 5765.692188261213
+  },
+  "amplitude_every_readout_loss_margin": 0.01133522885019489,
+  "finite_confidence_ratio_uniform_bound": 15.627129746615886
+}

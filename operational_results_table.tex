@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Setting & $t_M$ & $I_Y$ & $I_M$ & $I_Q$ & $I_M/I_Y$\\
+\midrule
+Low noise & 19 & 0.061046723 & 0.13874043 & 0.17350442 & 2.272692\\
+Moderate noise & 19 & 0.038805831 & 0.040601966 & 0.048686371 & 1.046285\\
+Noise limited & 25 & 0.00029368313 & 0.00029375217 & 0.00034732005 & 1.000235\\
+Amplitude, $\gamma=0.004$ & 38 & 0.0020961369 & 0.0022330946 & 0.0027204927 & 1.065338\\
+Amplitude, $\gamma=0.015$ & 29 & 0.00088329905 & 0.00089001134 & 0.0010274495 & 1.007599\\
+Amplitude, $\gamma=0.020$ & 24 & 0.00067308865 & 0.0006762638 & 0.00078103674 & 1.004717\\
+\bottomrule\end{tabular}
+\caption{Operational rates at their separately optimized depths; values are rounded.
+The first three rows use $(\mu,\gamma)=(.02,.0001),(.02,.01),(.002,.02)$,
+$D=256$, $c_0=0$, $c_1=1$. Amplitude rows use the parameters of
+Table~\ref{tab:amplitude-case}. Residual bounds are evaluated at high precision;
+outward interval arithmetic certifies the three amplitude rows.
+$I_M$ describes high-confidence information per cost, not an exact finite-confidence cost.}
+\label{tab:operational-rates}
+\end{table}

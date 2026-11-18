@@ -1,0 +1,10 @@
+Certified 1/2 1/20 ['0.9375000000', '0.9375000000'] (0, 2)
+Certified 1/2 1/100 ['1.2106481481', '1.2106481482'] (2, 4)
+Certified 1/2 1/10000 ['2.4455175468', '2.4455175469'] (4, 6)
+Certified 1 1/20 ['1.5879629629', '1.5879629630'] (1, 2)
+Certified 1 1/100 ['2.2861111111', '2.2861111112'] (2, 3)
+Certified 1 1/10000 ['4.6331807270', '4.6331807271'] (4, 5)
+Certified 6/5 1/20 ['1.8194444444', '1.8194444445'] (1, 2)
+Certified 6/5 1/100 ['2.7027777777', '2.7027777778'] (2, 3)
+Certified 6/5 1/10000 ['5.4824605624', '5.4824605625'] (4, 5)
+All sharp-characterization checks passed {"exact_quantum_realization_and_simulation": 1, "quantum_realizability_region_checks": 24, "exact_absorbing_chain_checks": 44, "exact_displayed_optima": 9, "independent_interval_bellman_checks": 9, "general_family_exact_certificates": 72, "enumerated_two_stage_trees": 2942, "independent_conditional_minimax_LPs": 2, "exact_tree_Bellman_comparisons": 3, "three_hypothesis_tree_LP_dual_checks": 2, "exact_price_curve_certificates": 303}

@@ -1,0 +1,183 @@
+{
+  "status": "All matrix and drift refinement checks passed",
+  "counts": {
+    "partial_transpose": 1,
+    "dephasing_semigroup": 320,
+    "generalized_eigenvalue_pairs": 320,
+    "coarse_and_refined_residual": 1,
+    "adversarial_drift_dynamic_programs": 16,
+    "conditional_supermartingale_checks": 816
+  },
+  "max_generalized_eigenvalue_relative_error": 5.46229728115577e-14,
+  "angular_grid": {
+    "grid_points": 2000,
+    "coarse_residual": 0.00017491439616678148,
+    "coarse_residual_below_1e_minus_5": false,
+    "refined_residual": "0.0",
+    "refined_angle": "1.8253537322939235289448299563603838845109453201272144996877741048502525191037053",
+    "note": "The grid assertion is not adopted; the residual is controlled by refinement."
+  },
+  "drift_cases": [
+    {
+      "signal_floor": 0.08,
+      "delta": 0.2,
+      "boundary": 9,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.19106825082674805,
+      "proved_error_bound": 0.19106825082674872,
+      "worst_truncated_mean": 89.66213501272398,
+      "proved_mean_bound": 112.5
+    },
+    {
+      "signal_floor": 0.08,
+      "delta": 0.1,
+      "boundary": 14,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.09579920210978815,
+      "proved_error_bound": 0.09579920210978889,
+      "worst_truncated_mean": 162.5038333252911,
+      "proved_mean_bound": 175.0
+    },
+    {
+      "signal_floor": 0.08,
+      "delta": 0.01,
+      "boundary": 29,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.009471635865594037,
+      "proved_error_bound": 0.009471636011648776,
+      "worst_truncated_mean": 361.10153985109616,
+      "proved_mean_bound": 362.5
+    },
+    {
+      "signal_floor": 0.08,
+      "delta": 0.001,
+      "boundary": 44,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.0008622718302410994,
+      "proved_error_bound": 0.0008622724691477499,
+      "worst_truncated_mean": 549.8694555556964,
+      "proved_mean_bound": 550.0
+    },
+    {
+      "signal_floor": 0.15,
+      "delta": 0.2,
+      "boundary": 5,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.18073076041852298,
+      "proved_error_bound": 0.180730760418523,
+      "worst_truncated_mean": 25.942655382799018,
+      "proved_mean_bound": 33.333333333333336
+    },
+    {
+      "signal_floor": 0.15,
+      "delta": 0.1,
+      "boundary": 8,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.0817918145114079,
+      "proved_error_bound": 0.08179181451140806,
+      "worst_truncated_mean": 49.34564689302708,
+      "proved_mean_bound": 53.333333333333336
+    },
+    {
+      "signal_floor": 0.15,
+      "delta": 0.01,
+      "boundary": 16,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.00787235943752706,
+      "proved_error_bound": 0.007872359437527088,
+      "worst_truncated_mean": 106.2192751706981,
+      "proved_mean_bound": 106.66666666666667
+    },
+    {
+      "signal_floor": 0.15,
+      "delta": 0.001,
+      "boundary": 23,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.0009553661613978899,
+      "proved_error_bound": 0.0009553661613978962,
+      "worst_truncated_mean": 153.2755327233039,
+      "proved_mean_bound": 153.33333333333334
+    },
+    {
+      "signal_floor": 0.3,
+      "delta": 0.2,
+      "boundary": 3,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.13503937007874012,
+      "proved_error_bound": 0.1350393700787401,
+      "worst_truncated_mean": 8.035344840240606,
+      "proved_mean_bound": 10.0
+    },
+    {
+      "signal_floor": 0.3,
+      "delta": 0.1,
+      "boundary": 4,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.07754667011174984,
+      "proved_error_bound": 0.07754667011174983,
+      "worst_truncated_mean": 11.971377681338115,
+      "proved_mean_bound": 13.333333333333334
+    },
+    {
+      "signal_floor": 0.3,
+      "delta": 0.01,
+      "boundary": 8,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.007017446651401211,
+      "proved_error_bound": 0.0070174466514012135,
+      "worst_truncated_mean": 26.50938197663819,
+      "proved_mean_bound": 26.666666666666668
+    },
+    {
+      "signal_floor": 0.3,
+      "delta": 0.001,
+      "boundary": 12,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.0005937427459985177,
+      "proved_error_bound": 0.0005937427459985185,
+      "worst_truncated_mean": 39.98387228340709,
+      "proved_mean_bound": 40.0
+    },
+    {
+      "signal_floor": 0.55,
+      "delta": 0.2,
+      "boundary": 2,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.07773512476007675,
+      "proved_error_bound": 0.07773512476007673,
+      "worst_truncated_mean": 3.1566877833330746,
+      "proved_mean_bound": 3.6363636363636362
+    },
+    {
+      "signal_floor": 0.55,
+      "delta": 0.1,
+      "boundary": 2,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.07773512476007675,
+      "proved_error_bound": 0.07773512476007673,
+      "worst_truncated_mean": 3.1566877833330746,
+      "proved_mean_bound": 3.6363636363636362
+    },
+    {
+      "signal_floor": 0.55,
+      "delta": 0.01,
+      "boundary": 4,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.007054216724976934,
+      "proved_error_bound": 0.0070542167249769295,
+      "worst_truncated_mean": 7.194692460221219,
+      "proved_mean_bound": 7.2727272727272725
+    },
+    {
+      "signal_floor": 0.55,
+      "delta": 0.001,
+      "boundary": 6,
+      "horizon": 4000,
+      "worst_error_before_horizon": 0.0005984459249799802,
+      "proved_error_bound": 0.0005984459249799797,
+      "worst_truncated_mean": 10.900086596137134,
+      "proved_mean_bound": 10.909090909090908
+    }
+  ],
+  "note": "Finite deterministic checks support the supplied analytical proofs; no formal proof-assistant claim."
+}

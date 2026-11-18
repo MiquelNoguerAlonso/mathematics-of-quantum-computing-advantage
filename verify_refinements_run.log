@@ -1,0 +1,21 @@
+{
+  "status": "All matrix and drift refinement checks passed",
+  "counts": {
+    "partial_transpose": 1,
+    "dephasing_semigroup": 320,
+    "generalized_eigenvalue_pairs": 320,
+    "coarse_and_refined_residual": 1,
+    "adversarial_drift_dynamic_programs": 16,
+    "conditional_supermartingale_checks": 816
+  },
+  "max_generalized_eigenvalue_relative_error": 5.46229728115577e-14,
+  "angular_grid": {
+    "grid_points": 2000,
+    "coarse_residual": 0.00017491439616678148,
+    "coarse_residual_below_1e_minus_5": false,
+    "refined_residual": "0.0",
+    "refined_angle": "1.8253537322939235289448299563603838845109453201272144996877741048502525191037053",
+    "note": "The grid assertion is not adopted; the residual is controlled by refinement."
+  },
+  "note": "Finite deterministic checks support the supplied analytical proofs; no formal proof-assistant claim."
+}
